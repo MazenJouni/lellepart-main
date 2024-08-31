@@ -3,7 +3,6 @@ import icon from "astro-icon";
 import tailwind from "@astrojs/tailwind";
 import starlight from "@astrojs/starlight";
 import compressor from "astro-compressor";
-import vercelStatic from "@astrojs/vercel/static";
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
@@ -129,5 +128,4 @@ export default defineConfig({
     clientPrerender: true,
     directRenderScript: true
   },
-  adapter: vercelStatic(),
 });
