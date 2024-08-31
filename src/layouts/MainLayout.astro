@@ -1,0 +1,167 @@
+---
+import Meta from "@components/Meta.astro";
+import Navbar from "@components/sections/navbar&footer/Navbar.astro";
+import FooterSection from "@components/sections/navbar&footer/FooterSection.astro";
+import { SITE } from "@data/constants";
+import Balaton1 from "src/assets/images/balaton.jpg";
+import MainBuilding from "src/assets/images/main_hd.png";
+import strand from "src/assets/images/balaton_eye.jpg";
+import strand1 from "src/assets/images/strand.png";
+import balaton_eye from "src/assets/images/strand1.png";
+import { Image } from "astro:assets";
+
+// Setting expected props
+const { title = SITE.title, meta, structuredData, lang = "en" } = Astro.props;
+
+// Interface to type-check the properties
+interface Props {
+  title?: string;
+  meta?: string;
+  structuredData?: object;
+  lang?: string;
+}
+
+const images = [
+  {
+    src: Balaton1,
+    alt: "Melléképület – Lellepart Apartmenház",
+  },
+  {
+    src: balaton_eye,
+    alt: "Melléképület – Lellepart Apartmenház",
+  },
+  {
+    src: strand1,
+    alt: "Melléképület – Lellepart Apartmenház",
+  },
+];
+
+let currentIndex = 0;
+
+const currentPath = Astro.url.pathname;
+---
+
+<html lang={lang} class="scrollbar-hide lenis lenis-smooth scroll-pt-16">
+  <head>
+    <Meta meta={meta} structuredData={structuredData} />
+    <title>{title}</title>
+    <script is:inline>
+      if (
+        localStorage.getItem("hs_theme") === "dark" ||
+        (!("hs_theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
+    <script>
+      import "@scripts/lenisSmoothScroll.js";
+    </script>
+  </head>
+  <body
+    class="bg-neutral-200 selection:bg-yellow-400 selection:text-neutral-700 dark:bg-neutral-800"
+  >
+    <Navbar />
+
+    <div class="custom-container">
+      <div id="slideshow" class="slideshow">
+        <Image
+          hidden={currentPath.includes("products/")}
+          format="avif"
+          id="image"
+          src={images[currentIndex].src}
+          alt={images[currentIndex].alt}
+          class="image"
+          loading="eager"
+          decoding="sync"
+        />
+      </div>
+      <main style={currentPath.includes('products/') ? 'margin-top: 4rem;' : ''}>
+        <slot />
+      </main>
+    </div>
+
+    <FooterSection />
+
+    <script is:inline>
+      const currentPath = Astro.url.pathname;
+
+      const images = [
+        {
+          src: "src/assets/images/balaton.jpg",
+          alt: "Melléképület – Lellepart Apartmenház",
+        },
+        {
+          src: "src/assets/images/balaton_eye.jpg",
+          alt: "Főépület – Lellepart Apartmenház",
+        },
+        {
+          src: "src/assets/images/strand1.png",
+          alt: "Melléképület – Lellepart Apartmenház",
+        },
+      ];
+
+      let currentIndex = 0;
+      const imageElement = document.getElementById("image");
+
+      // Function to check if the URL contains "products/id"
+      const shouldShowContainer = () => {
+        return window.location.href.includes("products/id");
+      };
+
+      const updateImage = () => {
+        void imageElement.offsetWidth; // Trigger reflow to restart the animation
+        currentIndex = (currentIndex + 1) % images.length;
+        imageElement.src = images[currentIndex].src;
+        imageElement.alt = images[currentIndex].alt;
+      };
+
+      setInterval(updateImage, 5000); // Change image every 5 seconds
+    </script>
+
+    <style>
+      .scrollbar-hide::-webkit-scrollbar {
+        display: none;
+      }
+
+      .scrollbar-hide {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      .custom-container {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .image {
+        position: relative;
+        height: 400px;
+        flex: 1;
+        width: 100%;
+      }
+
+      .fade {
+        opacity: 0;
+        transition: opacity 5s ease-in-out;
+      }
+
+      .fade.show {
+        opacity: 1;
+      }
+
+      @media (min-width: 640px) {
+        .custom-container {
+        }
+      }
+
+      @media (max-width: 724px) {
+        .image {
+          height: 250px !important;
+        }
+      }
+    </style>
+  </body>
+</html>

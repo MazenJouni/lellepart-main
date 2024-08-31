@@ -1,0 +1,150 @@
+---
+interface Props {
+  heading?: string;
+  content?: string;
+  isAddressVisible?: boolean;
+  addressContent?: string;
+  isLinkVisible?: boolean;
+  linkTitle?: string;
+  linkURL?: string;
+  isArrowVisible?: boolean;
+}
+
+const {
+  heading,
+  content,
+  isAddressVisible,
+  addressContent,
+  isLinkVisible,
+  linkTitle,
+  linkURL,
+  isArrowVisible,
+} = Astro.props as Props;
+
+const arrowSVG: string = `<svg
+  class="arrow-svg"
+  fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+</svg>`;
+---
+
+<div class="contact-icon-block">
+  <div class="icon">
+    <slot />
+  </div>
+  <div class="contact-text">
+    <h3 class="contact-heading">
+      {heading}
+    </h3>
+    <p class="contact-content">
+      {content}
+    </p>
+    {isAddressVisible && <p class="contact-address">{addressContent}</p>}
+    {
+      isLinkVisible && (
+        <a class="contact-link" href={linkURL}>
+          {linkTitle}
+          {isArrowVisible && <Fragment set:html={arrowSVG} />}
+        </a>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .contact-icon-block {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInAndUp 0.8s ease-out forwards;
+  }
+
+  .contact-icon-block::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border-radius: 12px 0 0 12px;
+  }
+
+  .contact-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .contact-heading {
+    font-size: 1.25rem;
+    font-weight: bold;
+    font-style: italic;
+    letter-spacing: -0.025em;
+    color: #1c1c1c;
+  }
+
+  .contact-content,
+  .contact-address {
+    font-size: 1rem;
+    color: #525252;
+  }
+
+  .contact-address {
+    font-style: italic;
+  }
+
+  .contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition:
+      color 0.3s,
+      transform 0.3s;
+  }
+
+  .contact-link:hover {
+    color: #ff7e5f;
+  }
+
+  .arrow-svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .contact-link:hover .arrow-svg {
+    transform: translateX(0.25rem);
+  }
+
+  @keyframes fadeInAndUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .icon {
+    color: #ff7e5f;
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+  }
+</style>

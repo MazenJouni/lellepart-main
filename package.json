@@ -10,8 +10,36 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^4.15.1",
+    "@astrojs/sitemap": "^3.1.6",
+    "@astrojs/vercel": "^7.7.2",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
     "@astrojs/check": "^0.9.3",
+    "@astrojs/starlight": "^0.25.1",
+    "@astrojs/starlight-tailwind": "^2.0.3",
+    "@astrojs/tailwind": "^5.1.0",
+    "@iconify-json/mdi": "^1.1.68",
+    "@iconify/icons-mdi": "^1.2.48",
+    "@iconify/json": "^2.2.242",
+    "@preline/collapse": "^2.4.1",
+    "@preline/dropdown": "^2.4.1",
+    "@preline/overlay": "^2.4.1",
+    "@tailwindcss/forms": "^0.5.8",
+    "astro-compressor": "^0.4.1",
+    "globby": "^14.0.2",
+    "gsap": "^3.12.5",
+    "html-minifier-terser": "^7.2.0",
+    "astro": "^4.15.1",
+    "astro-icon": "^1.1.1",
+    "lenis": "^1.1.13",
+    "preline": "^2.4.1",
+    "tailwindcss": "^3.4.5",
     "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "astro-vtbot": "^1.7.27",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.0",
+    "prettier-plugin-tailwindcss": "^0.6.5"
   }
 }

@@ -1,0 +1,546 @@
+---
+// Import the necessary dependencies.
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import MainBuilding from "src/assets/images/balaton.jpg";
+
+// Define the variables that will be used in this component
+const title: string = "Szolgáltatásaink";
+const subtitle: string = "Szeretettel várjuk, kedves vendégeinket!";
+const description: string =
+  "Apartmanházunkban minden kényelmet kielégítő körülmények között tudják eltölteni nyaralásukat. Saját, homokos, tengerparthoz hasonlító strandunk kisgyerekes családoknak is eszményi hely.";
+---
+
+<!-- Contact Us -->
+
+<div class="location"></div>
+
+<section class="section">
+
+
+  <div class="content">
+    <div class="text-box">
+      <div class="flex-column">
+        <h1 class="title">
+          {title}
+        </h1>
+      </div>
+      <p class="description">
+        {description}
+      </p>
+    </div>
+
+    <div class="information">
+      <!-- Elhelyezkedés -->
+      <div class="info-section full-width">
+        <Icon class="info-icon" name="mdi:map-marker" />
+        <div class="info-title">
+          <p class="info-text">Elhelyezkedés</p>
+          <p class="info-description">
+            Szállodánk <strong>Balatonlelle szívében</strong>, közvetlenül a
+            vízparton található. Élvezze a csodás kilátást a <strong
+              >Balatonra</strong
+            >, és könnyedén elérheti a város <strong>homokos strandját</strong> és
+            <strong>élményfürdőjét</strong>, amelyek ideálisak a
+            kikapcsolódáshoz. A városközpont mindössze <strong
+              >pár perc sétára</strong
+            > van, így könnyedén felfedezheti a remek <strong
+              >éttermeket, kávézókat és üzleteket</strong
+            >. Kiváló elhelyezkedésünk lehetővé teszi, hogy a <strong
+              >Balaton déli partjának</strong
+            > minden lehetőségét kihasználhassa.
+          </p>
+        </div>
+      </div>
+
+      <!-- Elérhetőségek -->
+      <div class="info-section full-width">
+        <Icon class="info-icon" name="mdi:bus" />
+        <div class="info-title">
+          <p class="info-text">Elérhetőségek</p>
+          <p class="info-description">
+            A <strong>vasútállomás</strong> és az <strong
+              >autóbusz-állomás</strong
+            > kényelmesen a közelben található, így szállodánk egyszerűen megközelíthető
+            <strong>tömegközlekedéssel</strong>. Akár vonattal, akár busszal
+            érkezik, szállodánk <strong>könnyen elérhető</strong> ezektől a fontos
+            közlekedési csomópontoktól.
+          </p>
+        </div>
+      </div>
+
+      <!-- 100 Méteren Belül -->
+      <div class="info-section">
+        <Icon class="info-icon" name="mdi:map-marker-radius-outline" />
+        <div class="info-title">
+          <p class="info-text">100 Méteren Belül</p>
+          <p class="info-description">
+            <strong>Éttermek</strong>, <strong>szórakozóhelyek</strong>, <strong
+              >gyógyszertár</strong
+            >, <strong>mozi</strong> és egy hangulatos butik sor is könnyen elérhető
+            <strong>100 méteren belül</strong>.
+          </p>
+        </div>
+      </div>
+
+      <!-- 5 Percre -->
+      <div class="info-section">
+        <Icon class="info-icon" name="mdi:timer" />
+        <div class="info-title">
+          <p class="info-text">5 Percre</p>
+          <p class="info-description">
+            <strong>Spar bevásárlóközpont</strong>, <strong>OTP Bank</strong>, <strong
+              >Szabadtéri színház</strong
+            > mindössze <strong>5 perces sétával</strong> elérhető.
+          </p>
+        </div>
+      </div>
+
+      <!-- Balatonlellén Belül -->
+      <div class="info-section">
+        <Icon class="info-icon" name="mdi:map-marker-multiple" />
+        <div class="info-title">
+          <p class="info-text">Balatonlellén Belül</p>
+          <p class="info-description">
+            Fedezze fel a közeli <strong
+              >szolgáltatásokat és látnivalókat</strong
+            >:
+            <ul>
+              <li>
+                <strong>Aldi</strong> & <strong>Lidl</strong> élelmiszerekért
+              </li>
+              <li><strong>McDonald's</strong> egy gyors étkezéshez</li>
+              <li><strong>Benzinkút</strong> tankoláshoz</li>
+              <li>
+                <strong>Gokart</strong>, <strong>Cirkusz</strong>, & <strong
+                  >Vidámpark</strong
+                > a szórakozáshoz
+              </li>
+              <li>
+                <strong>Bicikli kölcsönző</strong> & <strong
+                  >Surf oktatás</strong
+                > kalandvágyóknak
+              </li>
+              <li>
+                <strong>Vízi bicikli</strong> & <strong>Kenu kölcsönző</strong> a
+                vízi sportokhoz
+              </li>
+              <li>
+                <strong>Afrika Múzeum</strong> & <strong>Kapoli Múzeum</strong> a
+                kultúra kedvelőinek
+              </li>
+              <li>
+                <strong>Árpád kori templom rom</strong> a történelem szerelmeseinek
+              </li>
+              <li>
+                <strong>Vitorláskikötő</strong> & <strong>Hajókikötő</strong> egy
+                vízi naphoz
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+
+      <!-- Közeli Látnivalók -->
+      <div class="info-section">
+        <Icon class="info-icon" name="mdi:nature-people" />
+        <div class="info-title">
+          <p class="info-text">Közeli Látnivalók</p>
+          <p class="info-description">
+            Fedezzen fel izgalmas helyeket, amelyek mindössze egy rövid útra
+            vannak:
+            <ul>
+              <li><strong>Zamárdi Kalandpark</strong> egy kalandos naphoz</li>
+              <li>
+                <strong>Boglár Kilátó</strong> & <strong>Kalandpark</strong> a lélegzetelállító
+                kilátásért
+              </li>
+              <li>
+                <strong>Fonyódi Piac</strong> friss élelmiszerekért és egyedi árukért
+              </li>
+              <li>
+                <strong>Hajókirándulás Badacsonyba</strong> egy festői kirándulásért
+              </li>
+              <li><strong>Rádpuszta</strong> lovas programokhoz</li>
+              <li>
+                <strong>Borospincék</strong> borkóstolásra és helyi ízekért
+              </li>
+              <li>
+                <strong>Kishegy – Szent Donát Kápolna</strong> egy nyugodt pihenéshez
+              </li>
+              <li>
+                Hangulatos <strong>éttermek</strong> és <strong
+                  >borospincék</strong
+                > lenyűgöző kilátással a Balatonra
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+
+      <!-- Apartmanház Szolgáltatásai -->
+      <div class="info-section">
+        <Icon class="info-icon" name="mdi:room-service" />
+        <div class="info-title">
+          <p class="info-text">Apartmanház Szolgáltatásai</p>
+          <p class="info-description">
+            Élvezze exkluzív házon belüli szolgáltatásainkat:
+            <ul>
+              <li>
+                <strong>Masszázs</strong> – Lazítson apartmanja kényelmében
+              </li>
+              <li>
+                <strong>Fodrász</strong> – Friss megjelenés anélkül, hogy elhagyná
+                szobáját
+              </li>
+              <li>
+                <strong>Különtakarítás</strong> – Extra gondoskodás és figyelem
+              </li>
+              <li>
+                <strong>Mosógép használat</strong> – Kényelmes mosási lehetőségek
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+
+      <!-- Szórakozás -->
+      <div class="info-section">
+        <Icon class="info-icon" name="mdi:party-popper" />
+        <div class="info-title">
+          <p class="info-text">Szórakozás</p>
+          <p class="info-description">
+            Merüljön el a nyári szórakozásban ezekkel a programokkal:
+            <ul>
+              <li>
+                <strong>Szabadtéri programok</strong> egész nyáron, tökéletes kirándulásokhoz
+              </li>
+              <li>
+                <strong>Ingyenes rendezvények</strong> minden hétvégén – koncertek,
+                táncelőadások és még sok más a Lellei Rendezvényparkban
+              </li>
+              <li>
+                <strong>Éves Lellei Borhét</strong> augusztus elején, borkirálynő
+                választással
+              </li>
+            </ul>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <style>
+      /* General Section Styling */
+      .section {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 2.5rem 1rem;
+      }
+
+      @media (min-width: 640px) {
+        .section {
+          padding: 2.5rem 1.5rem;
+        }
+      }
+
+      @media (min-width: 1024px) {
+        .section {
+          padding: 3.5rem 2rem;
+        }
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin: 0 auto;
+        max-width: 90%
+      }
+
+      @media (min-width: 1024px) {
+        .content {
+        
+        }
+      }
+
+      .text-box {
+        display: flex;
+        align-items: start;
+        gap: 1rem;
+      }
+
+      @media (max-width: 1024px) {
+        .text-box {
+        flex-direction: column;
+        }
+
+        .description {
+        max-width: 100% !important;
+        }
+      }
+
+      .flex-column {
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .title,
+      .subtitle {
+        font-weight: bold;
+        letter-spacing: -0.025em;
+        color: #1c1c1c;
+      }
+
+      .title {
+        font-size: 1.5rem;
+      }
+
+      @media (min-width: 768px) {
+        .title {
+          font-size: 2.25rem;
+          line-height: 1.25;
+        }
+      }
+
+      .subtitle {
+        font-size: 1.25rem;
+      }
+
+      @media (min-width: 768px) {
+        .subtitle {
+          font-size: 1.25rem;
+          line-height: 1.25;
+        }
+      }
+
+      .dark .title {
+        color: #e5e5e5;
+      }
+
+      .description {
+        margin-top: 0.25rem;
+        font-size: 1rem;
+        color: #525252;
+        line-height: 1.6;
+        max-width: 60%;
+      }
+
+      .dark .description {
+        color: #a3a3a3;
+      }
+
+      /* Information Grid */
+      .information {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Columns with equal width */
+        grid-template-rows: auto auto; /* Two rows */
+        margin-top: 1rem; /* Margin for spacing */
+        gap: 1rem; /* Space between items */
+      }
+
+      @media (max-width: 1024px) {
+        .information {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+      .info-section {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        background: linear-gradient(
+          135deg,
+          #ffffff,
+          #f7f7f7
+        ); /* Light gradient background */
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        opacity: 0; /* Start as invisible */
+        transform: translateY(20px); /* Start shifted down */
+        animation: fadeInAndUp 0.8s ease-out forwards; /* Apply animation */
+      }
+
+      .info-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 100%;
+        background:  #F37021;
+        border-radius: 12px 0 0 12px;
+      }
+
+      .info-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .info-icon {
+        font-size: 2rem;
+        color: #F37021;
+        flex-shrink: 0;
+      }
+
+      .info-title {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        justify-content: center;
+      }
+
+      .info-text {
+        font-size: 1.25rem;
+        font-weight: bold;
+        font-style: italic;
+        letter-spacing: -0.025em;
+        color: #1c1c1c;
+      }
+
+      .info-description {
+        color: #525252;
+      }
+
+      @media (max-width: 1024px) {
+        .info-section {
+          flex-direction: column;
+          align-items: center;
+          gap: 0;
+        }
+
+        .info-text {
+          text-align: center;
+        }
+
+        .info-icon {
+          margin-bottom: 0.5rem;
+        }
+      }
+
+      /* Map Styling */
+      .mapouter {
+        position: relative;
+        text-align: right;
+        width: 100%;
+        height: 400px;
+      }
+
+      .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        width: 0;
+        height: 400px;
+      }
+
+      @media (max-width: 1024px) {
+        .gmap_canvas {
+          width: auto;
+          height: 300px;
+        }
+      }
+
+      .gmap_iframe {
+        flex: 1;
+        height: 400px !important;
+      }
+
+      @media (max-width: 1024px) {
+        .gmap_iframe {
+          width: auto;
+          height: 300px;
+        }
+      }
+
+      /* Location Styling */
+      .location {
+        grid-area: location;
+        display: flex;
+        gap: 5rem;
+      }
+
+      .location .image {
+        height: 400px;
+        flex: 1;
+        width: 0;
+        border-radius: 20px;
+      }
+
+      @media (max-width: 1024px) {
+        .location .image {
+          width: auto;
+          height: 300px;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .location {
+          flex-direction: column;
+          gap: 1rem;
+        }
+      }
+
+      /* Apply delays to stagger the appearance */
+      .info-section:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .info-section:nth-child(2) {
+        animation-delay: 0s;
+      }
+
+      .info-section:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      .info-section:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .info-section:nth-child(5) {
+        animation-delay: 0.8s;
+      }
+
+      .info-section:nth-child(6) {
+        animation-delay: 0.8s;
+      }
+
+      .info-section:nth-child(7) {
+        animation-delay: 1.2s;
+      }
+
+      .info-section:nth-child(8) {
+        animation-delay: 1.2s;
+      }
+
+      @keyframes fadeInAndUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .full-width {
+        grid-column: 1 / -1;
+      }
+
+      li {
+        color: #525252;
+      }
+    </style>
+  </div>
+</section>

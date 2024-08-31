@@ -1,0 +1,377 @@
+---
+import { Icon } from "astro-icon/components";
+const title: string = "Apartman Árazás";
+const description: string =
+  "Fedezze fel szezonális árazási lehetőségeinket, és élvezze nyaralását a legjobb elérhető árakon"
+---
+
+<section class="section">
+  <div class="content">
+    <div class="text-box">
+      <div class="flex-column">
+        <h1 class="title">
+          {title}
+        </h1>
+      </div>
+      <p class="description">
+        {description}
+      </p>
+    </div>
+
+    <div class="information">
+      <!-- Apartman x 2 -->
+      <div class="season-section full-width" id="apartman-x-2">
+        <h2 class="season-title">
+          <a href="products">Apartman x 2</a>
+          <Icon href="products" class="season-title icon" name="mdi:open-in-new" />
+        </h2>
+        <div class="pricing">
+          <div class="price-card">
+            <h3>Előszezon</h3>
+            <p>- 10 % kedvezmény</p>
+            <p class="season-date">május 1. - június 9.</p>
+          </div>
+          <div class="price-card">
+            <h3>Főszezon</h3>
+            <p>33.000,- Ft/éj</p>
+            <p class="season-date">június 10. - augusztus 25.</p>
+          </div>
+          <div class="price-card">
+            <h3>Utószezon</h3>
+            <p>- 10 % kedvezmény</p>
+            <p class="season-date">augusztus 26. - október 30.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apartman x 4 -->
+      <div class="season-section full-width" id="apartman-x-4">
+        <h2 class="season-title">
+          <a href="products">Apartman x 4</a>
+          <Icon class="season-title icon" name="mdi:open-in-new" />
+        </h2>
+        <div class="pricing">
+          <div class="price-card">
+            <h3>Előszezon</h3>
+            <p>- 10 % kedvezmény</p>
+            <p class="season-date">május 1. - június 9.</p>
+          </div>
+          <div class="price-card">
+            <h3>Főszezon</h3>
+            <p>45.000,- Ft/éj</p>
+            <p class="season-date">június 10. - augusztus 25.</p>
+          </div>
+          <div class="price-card">
+            <h3>Utószezon</h3>
+            <p>- 10 % kedvezmény</p>
+            <p class="season-date">augusztus 26. - október 30.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Apartman x 6 -->
+      <div class="season-section full-width" id="apartman-x-6">
+        <h2 class="season-title">
+          <a href="products">Apartman x 6</a>
+          <Icon class="season-title icon" name="mdi:open-in-new" />
+        </h2>
+        <div class="pricing">
+          <div class="price-card">
+            <h3>Előszezon</h3>
+            <p>- 10 % kedvezmény</p>
+            <p class="season-date">május 1. - június 9.</p>
+          </div>
+          <div class="price-card">
+            <h3>Főszezon</h3>
+            <p>50.000 - 65.000,- Ft/éj</p>
+            <p class="season-date">június 10. - augusztus 25.</p>
+          </div>
+          <div class="price-card">
+            <h3>Utószezon</h3>
+            <p>- 10 % kedvezmény</p>
+            <p class="season-date">augusztus 26. - október 30.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notes Section -->
+    <div class="notes">
+      <p>Az árak nem tartalmazzák az üdülőhelyi adót!</p>
+      <p>Széchenyi Pihenőkártyát elfogadunk.</p>
+      <p>Foglalás 30% foglaló befizetésével történik.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Include the provided styles here */
+  /* General Section Styling */
+  .section {
+    margin: 0 auto;
+    max-width: 85rem;
+    padding: 2.5rem 1rem;
+    font-family: "Arial", sans-serif;
+  }
+
+  @media (min-width: 640px) {
+    .section {
+      padding: 2.5rem 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section {
+      padding: 3.5rem 2rem;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 0 auto;
+    max-width: 42rem;
+  }
+
+  @media (min-width: 1024px) {
+    .content {
+      max-width: 80rem;
+    }
+  }
+
+  .text-box {
+        display: flex;
+        align-items: start;
+        gap: 1rem;
+      }
+
+      @media (max-width: 1024px) {
+        .text-box {
+        flex-direction: column;
+        }
+
+        .description {
+        max-width: 100% !important;
+        }
+      }
+
+  .header-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .header-wrapper {
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+
+  .title,
+  .subtitle {
+    font-weight: bold;
+    letter-spacing: -0.025em;
+    color: #1c1c1c;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  @media (min-width: 768px) {
+    .title {
+      font-size: 2.5rem;
+      line-height: 1.25;
+    }
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .subtitle {
+      font-size: 1.5rem;
+      line-height: 1.25;
+    }
+  }
+
+  .description {
+    margin-top: 0.25rem;
+    font-size: 1rem;
+    color: #525252;
+    line-height: 1.6;
+  }
+
+  /* Information Grid */
+  .information {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  @media (max-width: 1024px) {
+    .information {
+      flex-direction: column;
+    }
+  }
+
+  .season-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    background: linear-gradient(
+      135deg, 
+      #ffffff, 
+      #f7f7f7
+    ); /* Light gradient background */
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: 
+      transform 0.3s ease, 
+      box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 0; /* Start as invisible */
+    transform: translateY(20px); /* Start shifted down */
+    animation: fadeInAndUp 0.8s ease-out forwards; /* Apply animation */
+  }
+
+  .season-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    border-radius: 12px 0 0 12px;
+  }
+
+  .season-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .season-title {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #1c1c1c;
+    transition: transform 0.5s ease; /* Add transition for smooth scaling */
+  }
+
+  .season-title:hover {
+    transform: scale(1.05); /* Scale up the text slightly on hover */
+  }
+
+  .season-title a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .season-title a:hover {
+    text-decoration: underline;
+  }
+
+  .season-title .icon {
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+
+  .season-date {
+    font-size: 1.1rem;
+    color: #525252;
+  }
+
+  .pricing {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .price-card {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1 1 30%;
+    text-align: center;
+    transition: 
+      transform 0.3s ease, 
+      box-shadow 0.3s ease;
+  }
+
+  .price-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .price-card h3 {
+    margin-top: 0;
+    color: #333;
+  }
+
+  .price-card p {
+    color: #666;
+  }
+
+  @media (max-width: 480px) {
+    .price-card {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }
+
+  /* Apply delays to stagger the appearance */
+  .season-section:nth-child(1) {
+    animation-delay: 0s;
+  }
+
+  .season-section:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+
+  .season-section:nth-child(3) {
+    animation-delay: 0.8s;
+  }
+
+  @keyframes fadeInAndUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
+
+  /* Highlight current season */
+  .current-season {
+    background-color: orange !important;
+  }
+
+  /* Notes Section */
+  .notes {
+    margin-top: 2rem;
+    text-align: center;
+    color: #525252;
+    font-size: 1.1rem;
+  }
+</style>
