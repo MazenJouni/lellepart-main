@@ -11,6 +11,11 @@ const avatarSrcs: Array<string> = [
 ];
 ---
 
+<script>
+    import { inject } from "@vercel/analytics";
+    inject()
+</script>
+
 <MainLayout>
     <PricingSection />
 </MainLayout>
