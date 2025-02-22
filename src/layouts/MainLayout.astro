@@ -3,40 +3,17 @@ import Meta from "@components/Meta.astro";
 import Navbar from "@components/sections/navbar&footer/Navbar.astro";
 import FooterSection from "@components/sections/navbar&footer/FooterSection.astro";
 import { SITE } from "@data/constants";
-import Balaton1 from "src/assets/images/balaton.jpg";
-import MainBuilding from "src/assets/images/main_hd.png";
-import strand from "src/assets/images/balaton_eye.jpg";
-import strand1 from "src/assets/images/strand.png";
-import balaton_eye from "src/assets/images/strand1.png";
 import { Image } from "astro:assets";
+import Logo from "public/Lellepart_Apartmanház-removebg-preview.png";
+import { ViewTransitions } from "astro:transitions";
 
-// Setting expected props
 const { title = SITE.title, meta, structuredData, lang = "en" } = Astro.props;
-
-// Interface to type-check the properties
 interface Props {
   title?: string;
   meta?: string;
   structuredData?: object;
   lang?: string;
 }
-
-const images = [
-  {
-    src: Balaton1,
-    alt: "Melléképület – Lellepart Apartmenház",
-  },
-  {
-    src: balaton_eye,
-    alt: "Melléképület – Lellepart Apartmenház",
-  },
-  {
-    src: strand1,
-    alt: "Melléképület – Lellepart Apartmenház",
-  },
-];
-
-let currentIndex = 0;
 
 const currentPath = Astro.url.pathname;
 ---
@@ -45,121 +22,156 @@ const currentPath = Astro.url.pathname;
   <head>
     <Meta meta={meta} structuredData={structuredData} />
     <title>{title}</title>
-    <script is:inline>
-      if (
-        localStorage.getItem("hs_theme") === "dark" ||
-        (!("hs_theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    </script>
+    <ViewTransitions />
     <script>
       import "@scripts/lenisSmoothScroll.js";
     </script>
   </head>
   <body
-    class="bg-neutral-200 selection:bg-yellow-400 selection:text-neutral-700 dark:bg-neutral-800"
+    class="bg-neutral-200 selection:bg-neutral-400 selection:text-neutral-100"
   >
-    <Navbar />
+    {
+      currentPath === "/" && (
+        <div class="welcome-screen">
+          <div class="welcome-content">
+            <div class="logo-container animate-welcomeText">
+              <Image
+                src={Logo}
+                alt="Lellepart Apartmanház Logo"
+                class="welcome-logo"
+                width={200}
+                height={200}
+              />
+            </div>
+            <h1 class="animate-welcomeText mb-4 text-4xl font-bold text-white md:text-6xl">
+              Welcome to
+              <br />
+              Lellepart Apartmanház
+            </h1>
+            <p class="animate-welcomeText animation-delay-300 text-xl text-white/90 md:text-2xl">
+              Your perfect getaway at Lake Balaton
+            </p>
+            <div class="loading-bar" />
+          </div>
+        </div>
+      )
+    }
 
-    <div class="custom-container">
-      <div id="slideshow" class="slideshow">
-        <Image
-          hidden={currentPath.includes("products/")}
-          format="avif"
-          id="image"
-          src={images[currentIndex].src}
-          alt={images[currentIndex].alt}
-          class="image"
-          loading="eager"
-          decoding="sync"
-        />
+    <div class="main-content">
+      <Navbar />
+      <div class="custom-container">
+        <main
+          style={currentPath.includes("products/") ? "margin-top: 4rem;" : ""}
+        >
+          <slot />
+        </main>
       </div>
-      <main style={currentPath.includes('products/') ? 'margin-top: 4rem;' : ''}>
-        <slot />
-      </main>
+      <FooterSection />
     </div>
-
-    <FooterSection />
-
-    <script is:inline>
-      const currentPath = Astro.url.pathname;
-
-      const images = [
-        {
-          src: "src/assets/images/balaton.jpg",
-          alt: "Melléképület – Lellepart Apartmenház",
-        },
-        {
-          src: "src/assets/images/balaton_eye.jpg",
-          alt: "Főépület – Lellepart Apartmenház",
-        },
-        {
-          src: "src/assets/images/strand1.png",
-          alt: "Melléképület – Lellepart Apartmenház",
-        },
-      ];
-
-      let currentIndex = 0;
-      const imageElement = document.getElementById("image");
-
-      // Function to check if the URL contains "products/id"
-      const shouldShowContainer = () => {
-        return window.location.href.includes("products/id");
-      };
-
-      const updateImage = () => {
-        void imageElement.offsetWidth; // Trigger reflow to restart the animation
-        currentIndex = (currentIndex + 1) % images.length;
-        imageElement.src = images[currentIndex].src;
-        imageElement.alt = images[currentIndex].alt;
-      };
-
-      setInterval(updateImage, 5000); // Change image every 5 seconds
-    </script>
 
     <style>
       .scrollbar-hide::-webkit-scrollbar {
         display: none;
       }
-
       .scrollbar-hide {
         -ms-overflow-style: none;
         scrollbar-width: none;
       }
-
       .custom-container {
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto;
       }
-
-      .image {
+      .welcome-screen {
+        position: fixed;
+        inset: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        animation: welcomeScreenFade 0.5s ease-in-out forwards 3s;
+      }
+      .welcome-content {
+        text-align: center;
+        padding: 2rem;
+      }
+      .loading-bar {
+        width: 200px;
+        height: 3px;
+        margin: 2rem auto;
         position: relative;
-        height: 400px;
-        flex: 1;
-        width: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+      }
+      .loading-bar::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        width: 0;
+        background: white;
+        animation: loadingBarProgress 2s ease-in-out forwards;
+      }
+      .main-content {
+        position: relative;
+      }
+      .logo-container {
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+      }
+      .welcome-logo {
+        max-width: 200px;
+        height: auto;
+        margin-bottom: 1rem;
       }
 
-      .fade {
-        opacity: 0;
-        transition: opacity 5s ease-in-out;
+      @keyframes welcomeScreenFade {
+        to {
+          opacity: 0;
+          transform: scale(1.1);
+          visibility: hidden;
+        }
       }
-
-      .fade.show {
-        opacity: 1;
+      @keyframes loadingBarProgress {
+        to {
+          width: 100%;
+        }
       }
-
-      @media (min-width: 640px) {
-        .custom-container {
+      @keyframes welcomeText {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
       }
 
-      @media (max-width: 724px) {
-        .image {
-          height: 250px !important;
+      .animate-welcomeText {
+        opacity: 0;
+        animation: welcomeText 0.8s ease-out forwards;
+      }
+      .animation-delay-300 {
+        animation-delay: 2.3s;
+      }
+
+      @media (max-width: 640px) {
+        .welcome-content h1 {
+          font-size: 2rem;
+          line-height: 1.2;
+        }
+        .welcome-content p {
+          font-size: 1.125rem;
+        }
+        .loading-bar {
+          width: 150px;
+        }
+        .welcome-logo {
+          max-width: 150px;
+        }
+        .logo-container {
+          margin-bottom: 1.5rem;
         }
       }
     </style>

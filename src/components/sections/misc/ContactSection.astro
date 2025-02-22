@@ -4,148 +4,323 @@ import { Icon } from "astro-icon/components";
 const title: string = "Kapcsolat";
 const description: string =
   "Van kérdése vagy szeretne lefoglalni egy tökéletes nyaralást? Lépjen velünk kapcsolatba, és segítünk, hogy a Balatonnál töltött pihenése felejthetetlen legyen!"
+
+const phone = "+36705180525";
+const phoneFormatted = "+36 70/518-0525";
+const email = "lellepart1@gmail.com";
+const address = "Napospart u. 1.";
+const city = "Balatonlelle";
 ---
 
-<section class="section">
-  <div class="content">
-    <div class="text-box">
-      <div class="flex-column">
-        <h1 class="title">
-          {title}
-        </h1>
+<section class="hero">
+  <div class="hero-content">
+    <h1>{title}</h1>
+    <p>{description}</p>
+  </div>
+  <div class="hero-pattern"></div>
+</section>
+
+<section class="contact-section">
+  <div class="contact-grid">
+    <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="icon-wrapper">
+        <Icon name="mdi:map-marker" class="contact-icon" />
       </div>
-      <p class="description">
-        {description}
-      </p>
+      <div class="contact-content">
+        <h3>Lellepart Apartmanház</h3>
+        <p>{city}</p>
+        <a 
+          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${address} ${city}`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="contact-link"
+        >
+          <span>{address}</span>
+          <Icon name="mdi:open-in-new" class="link-icon" />
+        </a>
+      </div>
     </div>
 
-    <div class="contact-grid">
-      <ContactIconBlock
-        heading="Lellepart Apartmanház"
-        content="Balatonlelle"
-        isLinkVisible={true}
-        linkTitle="Napospart u. 1."
-        linkURL="#"
-      >
-        <Icon class="info-icon" name="mdi:map-marker" />
-      </ContactIconBlock>
-
-      <ContactIconBlock
-        heading="Kapcsolat"
-        content="Telefon: +36 70/518-0525"
-        isLinkVisible={true}
-        linkTitle="E-mail: lellepart1@gmail.com"
-        linkURL="#"
-      >
-        <Icon class="info-icon" name="mdi:email-outline" />
-      </ContactIconBlock>      
+    <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="icon-wrapper">
+        <Icon name="mdi:phone-outline" class="contact-icon" />
+      </div>
+      <div class="contact-content">
+        <h3>Kapcsolat</h3>
+        <a href={`tel:${phone}`} class="contact-link phone-link">
+          <span>Telefon: {phoneFormatted}</span>
+          <Icon name="mdi:phone" class="link-icon" />
+        </a>
+        <a href={`mailto:${email}`} class="contact-link email-link">
+          <span>E-mail: {email}</span>
+          <Icon name="mdi:email" class="link-icon" />
+        </a>
+      </div>
+    </div>
   </div>
-  <div style="width: 100%">
-    <iframe width="100%" height="600" 
-    frameborder="0" scrolling="no" marginheight="0" 
-    marginwidth="0"
-    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=lellepart+(lellepart%20apartmenhaz)&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-    </iframe></div>
+
+  <div class="map-container" data-aos="fade-up" data-aos-delay="300">
+    <iframe 
+      width="100%" 
+      height="600" 
+      frameborder="0" 
+      scrolling="no" 
+      marginheight="0" 
+      marginwidth="0"
+      src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=lellepart+(lellepart%20apartmenhaz)&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+    </iframe>
+  </div>
 </section>
 
 <style>
-  .section {
-    margin: 0 auto;
-    max-width: 85rem;
-    padding: 2.5rem 1rem;
-  }
-
-  @media (min-width: 640px) {
-    .section {
-      padding: 2.5rem 1.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .section {
-      padding: 3.5rem 2rem;
-    }
-  }
-
-  .content {
+  .hero {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    align-items: center;
+    min-height: 40vh;
+    padding: 7rem 2rem 2rem 2rem;
+    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
+    background-size: 40px 40px;
+    animation: patternMove 20s linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes patternMove {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-20px) translateY(-20px); }
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+    animation: shimmer 5s infinite linear;
+  }
+
+  .hero-content {
+    max-width: 800px;
     margin: 0 auto;
-    max-width: 42rem;
-  }
-
-  @media (min-width: 1024px) {
-    .content {
-      max-width: 80rem;
-    }
-  }
-
-  .text-box {
-    display: flex;
-    align-items: start;
-    gap: 1rem;
-  }
-
-  @media (max-width: 1024px) {
-    .text-box {
-    flex-direction: column;
-    }
-
-    .description {
-    max-width: 100% !important;
-    }
-  }
-
-  .title {
     text-align: center;
-    font-weight: bold;
-    letter-spacing: -0.025em;
-    color: #1c1c1c;
-    font-size: 2.25rem;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease-out forwards;
   }
 
-  @media (min-width: 768px) {
-    .title {
-      font-size: 2.25rem;
-      line-height: 1.25;
-    }
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: white;
+    margin-bottom: 1rem;
+    line-height: 1.2;
   }
 
-  .description {
-    width: 60%;
-    margin-top: 0.25rem;
-    font-size: 1rem;
-    color: #525252;
-    line-height: 1.6;
+  .hero p {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: white;
+    margin-bottom: 2rem;
   }
 
-  @media (min-width: 768px) {
-    .description {
-      font-size: 1rem;
-      line-height: 1.25;
-    }
-  }
-
-  .dark .title {
-    color: #e5e5e5;
-  }
-
-  .dark .description {
-    color: #a3a3a3;
+  .contact-section {
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
   }
 
   .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-top: 1rem;
-    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
   }
 
-  @media (max-width: 1024px) {
+  .contact-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f6d365, #fda085);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+    transform-origin: left;
+  }
+
+  .contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  }
+
+  .contact-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .icon-wrapper {
+    background: rgba(246, 211, 101, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .contact-card:hover .icon-wrapper {
+    transform: scale(1.1) rotate(5deg);
+    background: rgba(246, 211, 101, 0.2);
+  }
+
+  .contact-icon {
+    font-size: 2rem;
+    color: #f6d365;
+  }
+
+  .contact-content h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+
+  .contact-content p {
+    color: #666;
+    margin-bottom: 0.5rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #f6d365;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0;
+  }
+
+  .contact-link:hover {
+    color: #fda085;
+    transform: translateX(5px);
+  }
+
+  .contact-link .link-icon {
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+  }
+
+  .contact-link:hover .link-icon {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .phone-link, .email-link {
+    position: relative;
+    padding: 0.8rem 0;
+  }
+
+  .phone-link::after, .email-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, #f6d365, transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .phone-link:hover::after, .email-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Active state for touch devices */
+  @media (hover: none) {
+    .contact-link .link-icon {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .phone-link::after, .email-link::after {
+      transform: scaleX(1);
+      opacity: 0.3;
+    }
+  }
+
+  .map-container {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+      padding: 6rem 1rem 2rem 1rem;
+    }
+
+    .contact-section {
+      padding: 2rem 1rem;
+    }
+
     .contact-grid {
-      display: flex;
-      flex-direction: column;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      padding: 1.5rem;
+    }
+
+    .icon-wrapper {
+      width: 50px;
+      height: 50px;
+    }
+
+    .contact-content h3 {
+      font-size: 1.3rem;
     }
   }
 </style>

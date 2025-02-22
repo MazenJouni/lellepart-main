@@ -18,7 +18,7 @@ const homeUrl = Astro.currentLocale === "fr" ? "/fr" : "/";
 >
   <!-- Navigation container -->
   <nav
-    class="relative mx-2 w-full rounded-[36px] border border-yellow-100/40 bg-yellow-50/60 px-4 py-3 backdrop-blur-md dark:border-neutral-700/40 dark:bg-neutral-800/80 dark:backdrop-blur-md md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8 xl:mx-auto"
+    class="relative mx-auto w-[90%] rounded-[36px] border border-yellow-100/40 bg-white/80 backdrop-blur-md shadow-lg px-4 py-3 md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8"
     aria-label="Global"
   >
     <div class="flex items-center justify-between w-full">
@@ -114,12 +114,12 @@ const homeUrl = Astro.currentLocale === "fr" ? "/fr" : "/";
   width: 100%; /* This is the w-full class */
   flex-wrap: wrap; /* This is the flex-wrap class */
   font-size: 0.875rem; /* This is the text-sm class */
+  justify-content: center; /* Center the navbar */
 }
 
 @media (min-width: 768px) {
   .header {
     flex-wrap: nowrap; /* This is the md:flex-nowrap class */
-    justify-content: flex-start; /* This is the md:justify-start class */
   }
 }
 </style>

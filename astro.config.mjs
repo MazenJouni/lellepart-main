@@ -128,4 +128,18 @@ export default defineConfig({
     clientPrerender: true,
     directRenderScript: true
   },
+  server: {
+    hmr: true,
+    watch: {
+      // Enable watching for all files
+      ignored: ['!**/node_modules/**']
+    }
+  },
+  vite: {
+    server: {
+        watch: {
+            usePolling: true,
+        }
+    }
+},
 });
