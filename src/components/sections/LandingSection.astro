@@ -93,14 +93,12 @@ const amenities = [
     align-items: center;
     min-height: 80vh;
     padding: 7rem 2rem 2rem 2rem;
-    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    background: theme('backgroundImage.primary-gradient');
     position: relative;
     overflow: hidden;
     gap: 2rem;
-    position: relative;
   }
 
-  /* Add subtle animated gradient overlay */
   .hero::before {
     content: '';
     position: absolute;
@@ -108,7 +106,7 @@ const amenities = [
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+    background: theme('backgroundImage.shimmer-gradient');
     animation: shimmer 5s infinite linear;
   }
 
@@ -170,6 +168,9 @@ const amenities = [
   .feature-card {
     position: relative;
     overflow: hidden;
+    background: theme('colors.background.DEFAULT');
+    box-shadow: 0 20px 40px theme('colors.shadow.DEFAULT');
+    border: 1px solid theme('colors.border.light');
   }
 
   .feature-card::before {
@@ -205,6 +206,8 @@ const amenities = [
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
+    background: theme('colors.white');
+    color: theme('colors.primary.500');
   }
 
   .cta-button::after {
@@ -253,15 +256,13 @@ const amenities = [
     width: 100%;
     height: auto;
     max-height: 400px;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    border-radius: 24px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   }
 
   .cta-button {
     display: inline-block;
     padding: 1rem 2rem;
-    background: white;
-    color: #f6d365;
     border-radius: 50px;
     font-weight: bold;
     text-decoration: none;
@@ -270,12 +271,12 @@ const amenities = [
 
   .cta-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px theme('colors.shadow.light');
   }
 
   .features {
     padding: 4rem 2rem;
-    background: white;
+    background: theme('colors.background.light');
   }
 
   .features-grid {
@@ -293,9 +294,6 @@ const amenities = [
     align-items: center;
     justify-content: flex-start;
     padding: 2rem 1.5rem;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     transition: all 0.3s ease;
     height: 100%;
     text-align: center;
@@ -303,16 +301,16 @@ const amenities = [
 
   .feature-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    box-shadow: 0 25px 45px rgba(33, 147, 176, 0.1);
   }
 
   .feature-icon {
     font-size: 2.8rem;
-    color: #f6d365;
+    color: theme('colors.primary.500');
     margin-bottom: 1.5rem;
     padding: 1rem;
-    background: rgba(246, 211, 101, 0.1);
-    border-radius: 50%;
+    background: rgba(33, 147, 176, 0.1);
+    border-radius: 12px;
     width: 80px;
     height: 80px;
     display: flex;
@@ -324,30 +322,30 @@ const amenities = [
 
   @keyframes pulse {
     0% {
-      background: rgba(246, 211, 101, 0.1);
+      background: rgba(33, 147, 176, 0.1);
     }
     50% {
-      background: rgba(246, 211, 101, 0.3);
+      background: rgba(33, 147, 176, 0.2);
     }
     100% {
-      background: rgba(246, 211, 101, 0.1);
+      background: rgba(33, 147, 176, 0.1);
     }
   }
 
   .feature-card:hover .feature-icon {
     transform: scale(1.1);
-    background: rgba(246, 211, 101, 0.2);
+    background: rgba(33, 147, 176, 0.15);
   }
 
   .feature-card h3 {
-    color: #333;
+    color: theme('colors.text.primary');
     margin-bottom: 1rem;
     font-size: 1.5rem;
     font-weight: 600;
   }
 
   .feature-card p {
-    color: #666;
+    color: theme('colors.text.secondary');
     line-height: 1.6;
     margin: 0;
     flex-grow: 1;
@@ -400,6 +398,7 @@ const amenities = [
     }
 
     .feature-card {
+      border-radius: 16px;
       padding: 1.5rem 1rem;
     }
 
@@ -408,6 +407,7 @@ const amenities = [
       height: 60px;
       font-size: 2rem;
       margin-bottom: 1rem;
+      border-radius: 10px;
     }
 
     .feature-card h3 {

@@ -78,7 +78,7 @@ const city = "Balatonlelle";
     align-items: center;
     min-height: 40vh;
     padding: 7rem 2rem 2rem 2rem;
-    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    background: theme('backgroundImage.primary-gradient-alt');
     position: relative;
     overflow: hidden;
   }
@@ -107,7 +107,7 @@ const city = "Balatonlelle";
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 100%);
+    background: theme('backgroundImage.shimmer-gradient');
     animation: shimmer 5s infinite linear;
   }
 
@@ -147,9 +147,9 @@ const city = "Balatonlelle";
   }
 
   .contact-card {
-    background: white;
+    background: theme('colors.background.DEFAULT');
+    box-shadow: 0 15px 35px theme('colors.shadow.DEFAULT');
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
     padding: 2rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -163,7 +163,7 @@ const city = "Balatonlelle";
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, #f6d365, #fda085);
+    background: theme('backgroundImage.primary-gradient');
     transform: scaleX(0);
     transition: transform 0.4s ease;
     transform-origin: left;
@@ -171,7 +171,7 @@ const city = "Balatonlelle";
 
   .contact-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px theme('colors.shadow.DEFAULT');
   }
 
   .contact-card:hover::before {
@@ -179,7 +179,7 @@ const city = "Balatonlelle";
   }
 
   .icon-wrapper {
-    background: rgba(246, 211, 101, 0.1);
+    background: rgba(33, 147, 176, 0.1);
     width: 60px;
     height: 60px;
     border-radius: 12px;
@@ -192,22 +192,22 @@ const city = "Balatonlelle";
 
   .contact-card:hover .icon-wrapper {
     transform: scale(1.1) rotate(5deg);
-    background: rgba(246, 211, 101, 0.2);
+    background: rgba(33, 147, 176, 0.15);
   }
 
   .contact-icon {
     font-size: 2rem;
-    color: #f6d365;
+    color: theme('colors.primary.500');
   }
 
   .contact-content h3 {
     font-size: 1.5rem;
-    color: #333;
+    color: theme('colors.text.primary');
     margin-bottom: 1rem;
   }
 
   .contact-content p {
-    color: #666;
+    color: theme('colors.text.secondary');
     margin-bottom: 0.5rem;
   }
 
@@ -215,14 +215,14 @@ const city = "Balatonlelle";
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: #f6d365;
+    color: theme('colors.primary.500');
     text-decoration: none;
     transition: all 0.3s ease;
     padding: 0.5rem 0;
   }
 
   .contact-link:hover {
-    color: #fda085;
+    color: theme('colors.secondary.500');
     transform: translateX(5px);
   }
 
@@ -250,7 +250,7 @@ const city = "Balatonlelle";
     left: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(90deg, #f6d365, transparent);
+    background: linear-gradient(90deg, theme('colors.primary.500'), transparent);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.3s ease;
@@ -276,7 +276,7 @@ const city = "Balatonlelle";
   .map-container {
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    box-shadow: 0 15px 35px theme('colors.shadow.DEFAULT');
   }
 
   @keyframes shimmer {

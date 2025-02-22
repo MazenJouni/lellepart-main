@@ -18,7 +18,7 @@ const homeUrl = Astro.currentLocale === "fr" ? "/fr" : "/";
 >
   <!-- Navigation container -->
   <nav
-    class="relative mx-auto w-[90%] rounded-[36px] border border-yellow-100/40 bg-white/80 backdrop-blur-md shadow-lg px-4 py-3 md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8"
+    class="relative mx-auto w-[90%] rounded-[36px] border border-primary-100/40 bg-white/80 backdrop-blur-md shadow-lg px-4 py-3 md:flex md:items-center md:justify-between md:px-6 md:py-0 lg:px-8"
     aria-label="Global"
   >
     <div class="flex items-center justify-between w-full">
@@ -41,7 +41,7 @@ const homeUrl = Astro.currentLocale === "fr" ? "/fr" : "/";
       <div class="ml-auto mr-5 md:hidden">
         <button
           type="button"
-          class="hs-collapse-toggle flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-neutral-600 transition duration-300 hover:bg-neutral-200 disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:outline-none"
+          class="hs-collapse-toggle flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold text-text-primary transition duration-300 hover:bg-background-light disabled:pointer-events-none disabled:opacity-50 dark:text-neutral-400 dark:hover:bg-neutral-700 dark:focus:outline-none"
           data-hs-collapse="#navbar-collapse-with-animation"
           aria-controls="navbar-collapse-with-animation"
           aria-label="Toggle navigation"
@@ -84,19 +84,14 @@ const homeUrl = Astro.currentLocale === "fr" ? "/fr" : "/";
       id="navbar-collapse-with-animation"
       class="hs-collapse hidden grow basis-full overflow-hidden transition-all duration-300 md:block"
     >
-
-      <!-- Navigation links container -->
-
       <div
         class="mt-5 flex flex-col gap-x-0 gap-y-4 md:mt-0 md:flex-row md:items-center md:justify-end md:gap-x-4 md:gap-y-0 md:ps-7 lg:gap-x-7"
       >
-        <!-- Navigation links and Authentication component -->
         {
           strings.navBarLinks.map((link) => (
             <NavLink url={link.url} name={link.name} />
           ))
         }
-
         <LanguagePicker />
       </div>
     </div>
@@ -106,20 +101,39 @@ const homeUrl = Astro.currentLocale === "fr" ? "/fr" : "/";
 <style>
 .header {
   position: fixed;
-  top: 1rem; /* This is the top-4 class */
-  left: 0; /* This is part of inset-x-0 */
-  right: 0; /* This is part of inset-x-0 */
-  z-index: 50; /* This is the z-50 class */
-  display: flex; /* This is the flex class */
-  width: 100%; /* This is the w-full class */
-  flex-wrap: wrap; /* This is the flex-wrap class */
-  font-size: 0.875rem; /* This is the text-sm class */
-  justify-content: center; /* Center the navbar */
+  top: 1rem;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
   .header {
-    flex-wrap: nowrap; /* This is the md:flex-nowrap class */
+    flex-wrap: nowrap;
+  }
+}
+
+/* Add smooth transition styles */
+#navbar-collapse-with-animation {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+#navbar-collapse-with-animation.show {
+  max-height: 400px;
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  #navbar-collapse-with-animation {
+    max-height: none;
+    opacity: 1;
   }
 }
 </style>
@@ -235,4 +249,19 @@ const homeUrl = Astro.currentLocale === "fr" ? "/fr" : "/";
 <script>
   import "@preline/collapse/index.js";
   import "@preline/overlay/index.js";
+</script>
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const toggleButton = document.querySelector('[data-hs-collapse]');
+    const navbarContent = document.getElementById('navbar-collapse-with-animation');
+
+    if (toggleButton && navbarContent) {
+      toggleButton.addEventListener('click', () => {
+        navbarContent.classList.toggle('hidden');
+        navbarContent.classList.toggle('show');
+        toggleButton.classList.toggle('hs-collapse-open');
+      });
+    }
+  });
 </script>

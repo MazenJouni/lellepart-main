@@ -85,7 +85,7 @@ const pageTitle: string = `Products | ${SITE.title}`;
     align-items: center;
     min-height: 50vh;
     padding: 7rem 2rem 2rem 2rem;
-    background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+    background: theme('backgroundImage.primary-gradient-alt');
     position: relative;
     overflow: hidden;
   }
@@ -97,7 +97,7 @@ const pageTitle: string = `Products | ${SITE.title}`;
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
+    background: theme('backgroundImage.shimmer-gradient');
     animation: shimmer 5s infinite linear;
   }
 
@@ -117,20 +117,20 @@ const pageTitle: string = `Products | ${SITE.title}`;
 
   .hero h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    color: white;
+    color: theme('colors.white');
     margin-bottom: 1rem;
     line-height: 1.2;
   }
 
   .hero p {
     font-size: clamp(1.1rem, 2vw, 1.5rem);
-    color: white;
+    color: theme('colors.white');
     margin-bottom: 2rem;
   }
 
   .products {
     padding: 4rem 2rem;
-    background: white;
+    background: theme('colors.background.DEFAULT');
   }
 
   .products-grid {
