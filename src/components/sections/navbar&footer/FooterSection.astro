@@ -19,11 +19,53 @@ const crafted: string =
   Astro.currentLocale === "fr" ? "Fabriqué par" : "Crafted by";
 ---
 
-<footer class="flex w-full bg-neutral-300 dark:bg-neutral-900">
+<footer class="footer">
   <!-- Social Brands -->
-  <div style="align-items: center;">
+  <div class="social-container">
     <FooterSocialLink url={strings.socialLinks.facebook}
       ><Icon name="facebookFooter" />
     </FooterSocialLink>
+    <FooterSocialLink url={strings.socialLinks.instagram}
+      ><Icon name="instagramFooter" />
+    </FooterSocialLink>
+    <FooterSocialLink url={strings.socialLinks.tiktok}
+      ><Icon name="tiktokFooter" />
+    </FooterSocialLink>
   </div>
 </footer>
+
+<style>
+  .footer {
+    display: flex;
+    width: 100%;
+    background: theme('backgroundImage.primary-gradient-alt');
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Add shimmer effect like in hero */
+  .footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: theme('backgroundImage.shimmer-gradient');
+    animation: shimmer 5s infinite linear;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .social-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+    position: relative; /* Add this to place above shimmer */
+    z-index: 1; /* Add this to place above shimmer */
+  }
+</style>

@@ -8,6 +8,8 @@ const navBarLinks = [
   
   const socialLinks = {
     facebook: "#",
+    instagram: "#",
+    tiktok: "#",
   };
   
   export default {

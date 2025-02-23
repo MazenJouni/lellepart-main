@@ -61,7 +61,7 @@ export default {
 
       // Background colors
       background: {
-        light: '#f8fafc',
+        light: '#f0f7fa',
         DEFAULT: '#ffffff',
         dark: '#1a202c',
       },

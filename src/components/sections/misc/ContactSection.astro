@@ -21,54 +21,61 @@ const city = "Balatonlelle";
 </section>
 
 <section class="contact-section">
-  <div class="contact-grid">
-    <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
-      <div class="icon-wrapper">
-        <Icon name="mdi:map-marker" class="contact-icon" />
+  <div class="contact-container">
+    <div class="contact-grid">
+
+      <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="icon-wrapper">
+          <Icon name="mdi:phone-outline" class="contact-icon" />
+        </div>
+        <div class="contact-content">
+          <h3>Kapcsolat</h3>
+          <p class="receptionist-name">
+            <span class="role">Recepciővezető:</span>
+            Göndöcz Petra
+          </p>
+          <a href={`tel:${phone}`} class="contact-link phone-link">
+            <span>Telefon: {phoneFormatted}</span>
+            <Icon name="mdi:phone" class="link-icon" />
+          </a>
+          <a href={`mailto:${email}`} class="contact-link email-link">
+            <span>E-mail: {email}</span>
+            <Icon name="mdi:email" class="link-icon" />
+          </a>
+        </div>
       </div>
-      <div class="contact-content">
-        <h3>Lellepart Apartmanház</h3>
-        <p>{city}</p>
-        <a 
-          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${address} ${city}`)}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="contact-link"
-        >
-          <span>{address}</span>
-          <Icon name="mdi:open-in-new" class="link-icon" />
-        </a>
+
+      <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+        <div class="icon-wrapper">
+          <Icon name="mdi:map-marker" class="contact-icon" />
+        </div>
+        <div class="contact-content">
+          <h3>Lellepart Apartmanház</h3>
+          <p>{city}</p>
+          <a 
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${address} ${city}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-link"
+          >
+            <span>{address}</span>
+            <Icon name="mdi:open-in-new" class="link-icon" />
+          </a>
+        </div>
       </div>
     </div>
 
-    <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
-      <div class="icon-wrapper">
-        <Icon name="mdi:phone-outline" class="contact-icon" />
-      </div>
-      <div class="contact-content">
-        <h3>Kapcsolat</h3>
-        <a href={`tel:${phone}`} class="contact-link phone-link">
-          <span>Telefon: {phoneFormatted}</span>
-          <Icon name="mdi:phone" class="link-icon" />
-        </a>
-        <a href={`mailto:${email}`} class="contact-link email-link">
-          <span>E-mail: {email}</span>
-          <Icon name="mdi:email" class="link-icon" />
-        </a>
-      </div>
+    <div class="map-container" data-aos="fade-up" data-aos-delay="300">
+      <iframe 
+        width="100%" 
+        height="600" 
+        frameborder="0" 
+        scrolling="no" 
+        marginheight="0" 
+        marginwidth="0"
+        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=lellepart+(lellepart%20apartmenhaz)&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+      </iframe>
     </div>
-  </div>
-
-  <div class="map-container" data-aos="fade-up" data-aos-delay="300">
-    <iframe 
-      width="100%" 
-      height="600" 
-      frameborder="0" 
-      scrolling="no" 
-      marginheight="0" 
-      marginwidth="0"
-      src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=lellepart+(lellepart%20apartmenhaz)&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-    </iframe>
   </div>
 </section>
 
@@ -134,9 +141,14 @@ const city = "Balatonlelle";
   }
 
   .contact-section {
-    padding: 4rem 2rem;
+    padding: 4rem 0;
+    background: theme('colors.background.light');
+  }
+
+  .contact-container {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 0 2rem;
   }
 
   .contact-grid {
@@ -295,6 +307,17 @@ const city = "Balatonlelle";
     }
   }
 
+  .receptionist-name {
+    color: theme('colors.text.secondary');
+    margin-bottom: 0.8rem;
+    font-style: italic;
+  }
+
+  .receptionist-name .role {
+    font-weight: 500;
+    font-style: normal;
+  }
+
   @media (max-width: 768px) {
     .hero {
       min-height: auto;
@@ -302,7 +325,11 @@ const city = "Balatonlelle";
     }
 
     .contact-section {
-      padding: 2rem 1rem;
+      padding: 2rem 0;
+    }
+
+    .contact-container {
+      padding: 0 1rem;
     }
 
     .contact-grid {
