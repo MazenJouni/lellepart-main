@@ -31,14 +31,14 @@ const pageTitle: string = `Products | ${SITE.title}`;
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://screwfast.uk/products",
-    url: "https://screwfast.uk/products",
+    "@id": "https://lellepart.hu/products",
+    url: "https://lellepart.hu/products",
     name: "Apartmenház | lellepart",
     description:
       "Lellepart Apartmanházunkban minden kényelmet kielégítő körülmények között tudják eltölteni nyaralásukat. Saját, homokos, tengerparthoz hasonlító strandunk kisgyerekes családoknak is eszményi hely.",
     isPartOf: {
       "@type": "WebSite",
-      url: "https://screwfast.uk",
+      url: "https://lellepart.hu",
       name: "Lellepart",
       description: "Lellepart Apartmanház.",
     },
@@ -97,7 +97,7 @@ const pageTitle: string = `Products | ${SITE.title}`;
     left: 0;
     right: 0;
     bottom: 0;
-    background: theme('backgroundImage.shimmer-gradient');
+    background: linear-gradient(45deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
     animation: shimmer 5s infinite linear;
   }
 
@@ -117,20 +117,20 @@ const pageTitle: string = `Products | ${SITE.title}`;
 
   .hero h1 {
     font-size: clamp(2.5rem, 5vw, 4rem);
-    color: theme('colors.white');
+    color: white;
     margin-bottom: 1rem;
     line-height: 1.2;
   }
 
   .hero p {
     font-size: clamp(1.1rem, 2vw, 1.5rem);
-    color: theme('colors.white');
+    color: white;
     margin-bottom: 2rem;
   }
 
   .products {
     padding: 4rem 2rem;
-    background: theme('colors.background.DEFAULT');
+    background: white;
   }
 
   .products-grid {

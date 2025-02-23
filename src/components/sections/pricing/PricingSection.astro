@@ -1,8 +1,20 @@
 ---
 import { Icon } from "astro-icon/components";
+
 const title: string = "Apartman Árazás";
-const description: string =
-  "Fedezze fel szezonális árazási lehetőségeinket, és élvezze nyaralását a legjobb elérhető árakon"
+const description: string = "Fedezze fel szezonális árazási lehetőségeinket, és élvezze nyaralását a legjobb elérhető árakon";
+
+const pricingCards = [
+  { guests: 2, price: "36.000", delay: "100" },
+  { guests: 4, price: "48.000", delay: "200" },
+  { guests: 6, price: "55.000 - 68.000", delay: "300" }
+];
+
+const notes = [
+  { icon: "mdi:information", text: "Az árak nem tartalmazzák az üdülőhelyi adót!" },
+  { icon: "mdi:credit-card", text: "Széchenyi Pihenőkártyát elfogadunk." },
+  { icon: "mdi:cash", text: "Foglalás 30% foglaló befizetésével történik." }
+];
 ---
 
 <section class="hero">
@@ -14,208 +26,141 @@ const description: string =
 </section>
 
 <section class="pricing-section">
+  <div class="mobile-swipe-hint" id="swipeHint">
+    <Icon name="mdi:arrow-left" class="arrow-icon" />
+    <Icon name="mdi:hand-pointing-up" class="hand-icon" />
+    <Icon name="mdi:arrow-right" class="arrow-icon" />
+  </div>
+
   <div class="pricing-grid">
-    <!-- Apartman x 2 -->
-    <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
-      <div class="card-header">
-        <h2 class="card-title">
-          <a href="products">
-            <Icon name="mdi:bed" class="bed-icon" />
-            2 vendég
-          </a>
+    {pricingCards.map(card => (
+      <div class="pricing-card" data-aos="fade-up" data-aos-delay={card.delay}>
+        <div class="card-header">
+          <h2 class="card-title">
+            <a href="products">
+              <Icon name="mdi:bed" class="bed-icon" />
+              {card.guests} vendég
+            </a>
+          </h2>
           <Icon name="mdi:open-in-new" class="icon" />
-        </h2>
-        <div class="card-badge">Kétágyas apartman</div>
-      </div>
-      <div class="seasons">
-        <div class="season">
-          <div class="season-icon-wrapper">
-            <Icon name="mdi:weather-sunny" class="season-icon" />
-          </div>
-          <div class="season-content">
-            <h3>Előszezon</h3>
-            <p class="price">- 10 % kedvezmény</p>
-            <p class="date">május 1. - június 9.</p>
-          </div>
         </div>
         
-        <div class="season highlight">
-          <div class="season-icon-wrapper">
-            <Icon name="mdi:beach" class="season-icon" />
+        <div class="seasons">
+          <div class="season">
+            <div class="season-icon-wrapper">
+              <Icon name="mdi:weather-sunny" class="season-icon" />
+            </div>
+            <div class="season-content">
+              <h3>Előszezon</h3>
+              <p class="price">- 10 % kedvezmény</p>
+              <p class="date">május 1. - június 9.</p>
+            </div>
           </div>
-          <div class="season-content">
-            <h3>Főszezon</h3>
-            <p class="price">36.000,- Ft/éj</p>
-            <p class="date">június 10. - augusztus 25.</p>
+          
+          <div class="season highlight">
+            <div class="season-icon-wrapper">
+              <Icon name="mdi:beach" class="season-icon" />
+            </div>
+            <div class="season-content">
+              <h3>Főszezon</h3>
+              <p class="price">{card.price},- Ft/éj</p>
+              <p class="date">június 10. - augusztus 25.</p>
+            </div>
           </div>
-        </div>
-        
-        <div class="season">
-          <div class="season-icon-wrapper">
-            <Icon name="mdi:weather-sunset" class="season-icon" />
-          </div>
-          <div class="season-content">
-            <h3>Utószezon</h3>
-            <p class="price">- 10 % kedvezmény</p>
-            <p class="date">augusztus 26. - október 30.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Apartman x 4 -->
-    <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
-      <div class="card-header">
-        <h2 class="card-title">
-          <a href="products">
-            <Icon name="mdi:bed" class="bed-icon" />
-            4 vendég
-          </a>
-          <Icon name="mdi:open-in-new" class="icon" />
-        </h2>
-        <div class="card-badge">Négyágyas apartman</div>
-      </div>
-      <div class="seasons">
-        <div class="season">
-          <div class="season-icon-wrapper">
-            <Icon name="mdi:weather-sunny" class="season-icon" />
-          </div>
-          <div class="season-content">
-            <h3>Előszezon</h3>
-            <p class="price">- 10 % kedvezmény</p>
-            <p class="date">május 1. - június 9.</p>
-          </div>
-        </div>
-        
-        <div class="season highlight">
-          <div class="season-icon-wrapper">
-            <Icon name="mdi:beach" class="season-icon" />
-          </div>
-          <div class="season-content">
-            <h3>Főszezon</h3>
-            <p class="price">48.000,- Ft/éj</p>
-            <p class="date">június 10. - augusztus 25.</p>
-          </div>
-        </div>
-        
-        <div class="season">
-          <div class="season-icon-wrapper">
-            <Icon name="mdi:weather-sunset" class="season-icon" />
-          </div>
-          <div class="season-content">
-            <h3>Utószezon</h3>
-            <p class="price">- 10 % kedvezmény</p>
-            <p class="date">augusztus 26. - október 30.</p>
+          
+          <div class="season">
+            <div class="season-icon-wrapper">
+              <Icon name="mdi:weather-sunset" class="season-icon" />
+            </div>
+            <div class="season-content">
+              <h3>Utószezon</h3>
+              <p class="price">- 10 % kedvezmény</p>
+              <p class="date">augusztus 26. - október 30.</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Apartman x 6 -->
-    <div class="pricing-card" data-aos="fade-up" data-aos-delay="300">
-      <div class="card-header">
-        <h2 class="card-title">
-          <a href="products">
-            <Icon name="mdi:bed" class="bed-icon" />
-            6 vendég
-          </a>
-          <Icon name="mdi:open-in-new" class="icon" />
-        </h2>
-        <div class="card-badge">Hatágyas apartman</div>
-      </div>
-      <div class="seasons">
-        <div class="season">
-          <div class="season-icon-wrapper">
-            <Icon name="mdi:weather-sunny" class="season-icon" />
-          </div>
-          <div class="season-content">
-            <h3>Előszezon</h3>
-            <p class="price">- 10 % kedvezmény</p>
-            <p class="date">május 1. - június 9.</p>
-          </div>
-        </div>
-        
-        <div class="season highlight">
-          <div class="season-icon-wrapper">
-            <Icon name="mdi:beach" class="season-icon" />
-          </div>
-          <div class="season-content">
-            <h3>Főszezon</h3>
-            <p class="price">55.000 - 68.000,- Ft/éj</p>
-            <p class="date">június 10. - augusztus 25.</p>
-          </div>
-        </div>
-        
-        <div class="season">
-          <div class="season-icon-wrapper">
-            <Icon name="mdi:weather-sunset" class="season-icon" />
-          </div>
-          <div class="season-content">
-            <h3>Utószezon</h3>
-            <p class="price">- 10 % kedvezmény</p>
-            <p class="date">augusztus 26. - október 30.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+    ))}
   </div>
 
   <div class="notes">
-    <div class="note-card" data-aos="fade-up" data-aos-delay="300">
-      <div class="note-icon-wrapper">
-        <Icon name="mdi:information" class="note-icon" />
+    {notes.map((note, index) => (
+      <div class="note-card" data-aos="fade-up" data-aos-delay={300 + index * 100}>
+        <div class="note-icon-wrapper">
+          <Icon name={note.icon} class="note-icon" />
+        </div>
+        <p>{note.text}</p>
       </div>
-      <p>Az árak nem tartalmazzák az üdülőhelyi adót!</p>
-    </div>
-    <div class="note-card" data-aos="fade-up" data-aos-delay="400">
-      <div class="note-icon-wrapper">
-        <Icon name="mdi:credit-card" class="note-icon" />
-      </div>
-      <p>Széchenyi Pihenőkártyát elfogadunk.</p>
-    </div>
-    <div class="note-card" data-aos="fade-up" data-aos-delay="500">
-      <div class="note-icon-wrapper">
-        <Icon name="mdi:cash" class="note-icon" />
-      </div>
-      <p>Foglalás 30% foglaló befizetésével történik.</p>
-    </div>
+    ))}
   </div>
 </section>
+
+<script>
+  const swipeHint = document.getElementById('swipeHint');
+  const pricingGrid = document.querySelector('.pricing-grid');
+  
+  function handleSwipeHint() {
+    if (!swipeHint || !pricingGrid) return;
+
+    swipeHint.classList.add('show');
+    const cardWidth = pricingGrid.scrollWidth / 3;
+    
+    setTimeout(() => {
+      pricingGrid.scrollTo({ left: cardWidth, behavior: 'smooth' });
+
+      setTimeout(() => {
+        pricingGrid.scrollTo({ left: 0, behavior: 'smooth' });
+        
+        setTimeout(() => {
+          swipeHint.classList.add('hide');
+          setTimeout(() => {
+            swipeHint.style.display = 'none';
+          }, 500);
+        }, 500);
+      }, 800);
+    }, 500);
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && window.innerWidth <= 768) {
+          handleSwipeHint();
+          observer.disconnect();
+        }
+      });
+    },
+    { threshold: 0.2 }
+  );
+
+  if (pricingGrid) {
+    observer.observe(pricingGrid);
+  }
+</script>
 
 <style>
   .hero {
     display: flex;
     align-items: center;
     min-height: 40vh;
-    padding: 7rem 2rem 2rem 2rem;
+    padding: 7rem 2rem 2rem;
     background: theme('backgroundImage.primary-gradient');
     position: relative;
   }
 
   .hero-pattern {
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
     background-size: 40px 40px;
     animation: patternMove 20s linear infinite;
     pointer-events: none;
   }
 
-  @keyframes patternMove {
-    0% { transform: translateX(0) translateY(0); }
-    100% { transform: translateX(-20px) translateY(-20px); }
-  }
-
   .hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: theme('backgroundImage.shimmer-gradient');
     animation: shimmer 5s infinite linear;
   }
@@ -267,6 +212,8 @@ const description: string =
   }
 
   .card-header {
+    display: flex;
+    justify-content: center;
     margin-bottom: 2rem;
     position: relative;
   }
@@ -280,6 +227,7 @@ const description: string =
   .card-title a {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.75rem;
     color: inherit;
     text-decoration: none;
@@ -346,7 +294,7 @@ const description: string =
   }
 
   .price {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: theme('colors.primary.500');
     font-weight: 700;
     margin-bottom: 0.25rem;
@@ -358,7 +306,7 @@ const description: string =
   }
 
   .notes {
-    max-width: 800px;
+    max-width: fit-content;
     margin: 4rem auto 0;
     display: grid;
     gap: 1rem;
@@ -395,6 +343,87 @@ const description: string =
     font-size: 0.9375rem;
   }
 
+  .mobile-swipe-hint {
+    display: none;
+    position: fixed;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    border-radius: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    z-index: 100;
+    pointer-events: none;
+  }
+
+  .hand-icon {
+    width: 24px;
+    height: 24px;
+    color: theme('colors.primary.500');
+  }
+
+  .arrow-icon {
+    width: 20px;
+    height: 20px;
+    color: theme('colors.primary.500');
+  }
+
+  .mobile-swipe-hint.show {
+    animation: showHint 0.5s forwards ease-out;
+  }
+
+  .mobile-swipe-hint.show .hand-icon,
+  .mobile-swipe-hint.show .arrow-icon {
+    animation: swipeHint 1.5s ease-in-out infinite;
+  }
+
+  .mobile-swipe-hint.hide {
+    animation: hideHint 0.5s forwards ease-in;
+  }
+
+  @keyframes patternMove {
+    0% { transform: translate(0); }
+    100% { transform: translate(-20px, -20px); }
+  }
+
+  @keyframes showHint {
+    from {
+      opacity: 0;
+      transform: translate(-50%, 20px);
+    }
+    to {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
+
+  @keyframes hideHint {
+    from {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    to {
+      opacity: 0;
+      transform: translate(-50%, 20px);
+    }
+  }
+
+  @keyframes swipeHint {
+    0%, 100% {
+      transform: translateX(0);
+      opacity: 0.5;
+    }
+    50% {
+      transform: translateX(8px);
+      opacity: 1;
+    }
+  }
+
   @media (max-width: 768px) {
     .pricing-section {
       padding: 2rem 1rem;
@@ -407,10 +436,7 @@ const description: string =
       padding: 1rem 1rem 2rem;
       gap: 1rem;
       scrollbar-width: none;
-    }
-
-    .pricing-grid::-webkit-scrollbar {
-      display: none;
+      -webkit-overflow-scrolling: touch;
     }
 
     .pricing-card {
@@ -418,15 +444,8 @@ const description: string =
       scroll-snap-align: center;
     }
 
-    .season {
-      flex-direction: row;
-      align-items: center;
-      text-align: left;
-      padding: 1.25rem;
-    }
-
-    .note-card {
-      margin: 0 1rem;
+    .mobile-swipe-hint {
+      display: flex;
     }
   }
 

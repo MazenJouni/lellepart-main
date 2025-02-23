@@ -3,7 +3,7 @@
 const navBarLinks = [
     { name: "Szolgáltatásaink", url: "/" },
     { name: "Apartmanok", url: "/products" },
-    { name: "Araik", url: "/prices" },
+    { name: "Áraink", url: "/prices" },
     { name: "Kapcsolat", url: "/contact" },
   ];
   
