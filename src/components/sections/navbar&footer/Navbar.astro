@@ -118,22 +118,22 @@ const homeUrl = Astro.currentLocale === "fr" ? "/fr" : "/";
   }
 }
 
-/* Add smooth transition styles */
+/* Update the transition styles */
 #navbar-collapse-with-animation {
   max-height: 0;
   opacity: 0;
-  transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
-#navbar-collapse-with-animation.show {
+#navbar-collapse-with-animation:not(.hidden) {
   max-height: 400px;
   opacity: 1;
 }
 
 @media (min-width: 768px) {
   #navbar-collapse-with-animation {
-    max-height: none;
-    opacity: 1;
+    max-height: none !important;
+    opacity: 1 !important;
   }
 }
 </style>
@@ -258,8 +258,7 @@ const homeUrl = Astro.currentLocale === "fr" ? "/fr" : "/";
 
     if (toggleButton && navbarContent) {
       toggleButton.addEventListener('click', () => {
-        navbarContent.classList.toggle('hidden');
-        navbarContent.classList.toggle('show');
+        navbarContent.classList.toggle('hs-collapse-open');
         toggleButton.classList.toggle('hs-collapse-open');
       });
     }
