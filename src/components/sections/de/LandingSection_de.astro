@@ -3,6 +3,7 @@
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import MainBuilding from "src/assets/images/main_hd.png";
+import ReviewComponent from "@components/ui/blocks/ReviewComponent.astro";
 
 const title: string = "Unsere Dienstleistungen";
 const subtitle: string = "Wir heißen unsere lieben Gäste herzlich willkommen auf der offiziellen Website des <strong><em>Lellepart Apartment-Hauses</em></strong>!";
@@ -58,6 +59,13 @@ const amenities = [
 const phone = "+36705180525";
 const phoneFormatted = "+36 70/518-0525";
 const email = "lellepart1@gmail.com";
+
+const avatarSrcs: Array<string> = [
+  "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1531927557220-a9e23c1e4794?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1541101767792-f9b2b1c4f127?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&&auto=format&fit=facearea&facepad=3&w=300&h=300&q=80",
+  "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=300&h=300&q=80",
+];
 ---
 
 <section class="hero">
@@ -85,6 +93,7 @@ const email = "lellepart1@gmail.com";
       width={800} 
       height={600}
     />
+    <ReviewComponent avatars={avatarSrcs} starCount={4} rating={"4.8"} reviews={'Mehr als <span class="font-bold">200</span> Gast-Bewertungen'} />
   </div>
 </section>
 
@@ -106,9 +115,8 @@ const email = "lellepart1@gmail.com";
 <style>
   .hero {
     display: flex;
-    align-items: center;
     min-height: 80vh;
-    padding: 5rem 2rem 2rem 2rem;
+    padding: 6rem 2rem 0rem 2rem;
     background: theme('backgroundImage.primary-gradient');
     position: relative;
     overflow: hidden;
@@ -131,6 +139,10 @@ const email = "lellepart1@gmail.com";
   }
 
   .hero-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     opacity: 0;
     animation: fadeSlideIn 1s ease-out 0.3s forwards;
   }
@@ -247,13 +259,12 @@ const email = "lellepart1@gmail.com";
 
   .hero-content {
     flex: 1;
-    padding: 2rem;
     z-index: 2;
     max-width: 600px;
   }
 
   .hero h1 {
-    font-size: 46px;
+    font-size: 36px;
     color: white;
     margin-bottom: 1rem;
     line-height: 1.2;
@@ -266,7 +277,7 @@ const email = "lellepart1@gmail.com";
   }
 
   .hero p {
-    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-size: 24px;
     color: white;
     margin-bottom: 2rem;
   }
