@@ -1,8 +1,9 @@
 
 const navBarLinks = [
-    { name: "Home", url: "/fr" },
-    { name: "Apartments", url: "/fr/products" },
-    { name: "Contact", url: "/fr/contact" },
+    { name: "Home", url: "/en" },
+    { name: "Apartments", url: "/en/products" },
+    { name: "Prices", url: "/en/prices" },
+    { name: "Contact", url: "/en/contact" },
   ];
   
   

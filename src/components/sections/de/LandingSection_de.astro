@@ -1,57 +1,57 @@
 ---
-// Import the necessary dependencies.
+// Importiere die notwendigen Abhängigkeiten.
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import MainBuilding from "src/assets/images/main_hd.png";
 
-const title: string = "Szolgáltatásaink";
-const subtitle: string = "Szeretettel várjuk, kedves vendégeinket a <strong><em>Lellepart Apartmanház</em></strong> hivatalos oldalán!";
+const title: string = "Unsere Dienstleistungen";
+const subtitle: string = "Wir heißen unsere lieben Gäste herzlich willkommen auf der offiziellen Website des <strong><em>Lellepart Apartment-Hauses</em></strong>!";
 const description: string =
-  "Apartmanházunkban minden kényelmet kielégítő körülmények között tudják eltölteni nyaralásukat. Saját, homokos, tengerparthoz hasonlító strandunk tökéletes kikapcsolódást nyújt.";
+  "In unserem Apartment-Haus können Sie Ihren Urlaub in komfortablen Räumlichkeiten verbringen, die alle Ihre Bedürfnisse erfüllen. Unser eigener sandiger Strand, ähnlich einem Meeresstrand, bietet perfekte Erholung.";
 
 const services = [
   {
     icon: "mdi:map-marker",
-    title: "Elhelyezkedés",
-    description: "Szállodánk Balatonlelle központjában, közvetlenül a vízparton található. Élvezze a páratlan panorámát és a Balaton közelségét."
+    title: "Lage",
+    description: "Unser Hotel befindet sich im Zentrum von Balatonlelle, direkt am Wasser. Genießen Sie das einzigartige Panorama und die Nähe zum Plattensee."
   },
   {
     icon: "mdi:bus",
-    title: "Közlekedés",
-    description: "A vasútállomás és az autóbusz-állomás néhány perc sétára található szálláshelyünktől."
+    title: "Transport",
+    description: "Der Bahnhof und der Busbahnhof sind nur wenige Gehminuten von unserer Unterkunft entfernt."
   },
   {
     icon: "mdi:store",
-    title: "Környék",
-    description: "A környéken minden szolgáltatás elérhető: éttermek, üzletek, gyógyszertár, posta, orvosi rendelő és rendőrség."
+    title: "Umgebung",
+    description: "Alle Dienstleistungen sind in der Umgebung verfügbar: Restaurants, Geschäfte, Apotheke, Postamt, Arztpraxis und Polizeirevier."
   },
   {
     icon: "mdi:beach",
     title: "Strand",
-    description: "Saját, homokos, tengerparthoz hasonlító strandunk tökéletes helyszín a pihenéshez és kikapcsolódáshoz."
+    description: "Unser eigener sandiger Strand, ähnlich einem Meeresstrand, ist der perfekte Ort zum Entspannen und Erholen."
   },
   {
     icon: "mdi:home",
-    title: "Szállás",
-    description: "Modern, teljesen felszerelt apartmanjaink maximális kényelmet biztosítanak vendégeink számára."
+    title: "Unterkunft",
+    description: "Unsere modernen, voll ausgestatteten Apartments bieten maximalen Komfort für unsere Gäste."
   },
   {
     icon: "mdi:parking",
-    title: "Parkolás",
-    description: "Biztonságos, zárt parkolási lehetőség az apartmanház saját területén."
+    title: "Parkplatz",
+    description: "Sicherer, geschlossener Parkplatz auf dem Gelände des Apartment-Hauses."
   }
 ];
 
 const amenities = [
   {
     icon: "mdi:home",
-    title: "Szállás",
-    description: "Apartmanházunkban minden kényelmet kielégítő körülmények között tudják eltölteni nyaralásukat."
+    title: "Unterkunft",
+    description: "In unserem Apartment-Haus können Sie Ihren Urlaub in komfortablen Räumlichkeiten verbringen, die alle Ihre Bedürfnisse erfüllen."
   },
   {
     icon: "mdi:parking",
-    title: "Parkolás",
-    description: "Zárt parkolási lehetőség az apartmanház területén belül."
+    title: "Parkplatz",
+    description: "Geschlossener Parkplatz im Bereich des Apartment-Hauses."
   }
 ];
 
@@ -65,7 +65,7 @@ const email = "lellepart1@gmail.com";
     <h1 set:html={subtitle} />
     <p>{description}</p>
     <div class="cta-container">
-      <a href="/contact" class="cta-button">Foglalás</a>
+      <a href="/contact" class="cta-button">Jetzt buchen</a>
       <div class="quick-contacts">
         <a href={`tel:${phone}`} class="contact-link">
           <Icon name="mdi:phone" class="contact-icon" />
@@ -81,7 +81,7 @@ const email = "lellepart1@gmail.com";
   <div class="hero-image">
     <Image 
       src={MainBuilding} 
-      alt="Lellepart Apartmanház" 
+      alt="Lellepart Apartment-Haus" 
       width={800} 
       height={600}
     />

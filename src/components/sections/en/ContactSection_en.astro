@@ -1,9 +1,9 @@
 ---
 import ContactIconBlock from "@components/ui/blocks/ContactIconBlock.astro";
 import { Icon } from "astro-icon/components";
-const title: string = "Kapcsolat";
+const title: string = "Contact";
 const description: string =
-  "Van kérdése vagy szeretne lefoglalni egy tökéletes nyaralást? Lépjen velünk kapcsolatba, és segítünk, hogy a Balatonnál töltött pihenése felejthetetlen legyen!"
+  "Do you have any questions or would you like to book a perfect vacation? Get in touch with us, and we will help make your stay at Lake Balaton unforgettable!";
 
 const phone = "+36705180525";
 const phoneFormatted = "+36 70/518-0525";
@@ -29,17 +29,17 @@ const city = "Balatonlelle";
           <Icon name="mdi:phone-outline" class="contact-icon" />
         </div>
         <div class="contact-content">
-          <h3>Kapcsolat</h3>
+          <h3>Contact</h3>
           <p class="receptionist-name">
-            <span class="role">Recepciővezető:</span>
+            <span class="role">Reception Manager:</span>
             Göndöcz Petra
           </p>
           <a href={`tel:${phone}`} class="contact-link phone-link">
-            <span>Telefon: {phoneFormatted}</span>
+            <span>Phone: {phoneFormatted}</span>
             <Icon name="mdi:phone" class="link-icon" />
           </a>
           <a href={`mailto:${email}`} class="contact-link email-link">
-            <span>E-mail: {email}</span>
+            <span>Email: {email}</span>
             <Icon name="mdi:email" class="link-icon" />
           </a>
         </div>
@@ -73,7 +73,7 @@ const city = "Balatonlelle";
         scrolling="no" 
         marginheight="0" 
         marginwidth="0"
-        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=lellepart+(lellepart%20apartmenhaz)&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+        src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=lellepart+(lellepart%20apartment%20house)&amp;t=k&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
       </iframe>
     </div>
   </div>

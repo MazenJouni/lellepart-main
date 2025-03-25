@@ -1,98 +1,86 @@
----
-import { Icon } from "astro-icon/components";
-
-const title: string = "Apartman Árazás";
-const description: string = "Fedezze fel szezonális árazási lehetőségeinket, és élvezze nyaralását a legjobb elérhető árakon";
-
-const pricingCards = [
-  { guests: 2, price: "36.000", delay: "100" },
-  { guests: 4, price: "48.000", delay: "200" },
-  { guests: 6, price: "55.000 - 68.000", delay: "300" }
+--- import { Icon } from "astro-icon/components";
+const title: string = "Appartement Preise"; 
+const description: string = "Entdecken Sie unsere saisonalen Preisoptionen und genießen Sie Ihren Urlaub zu den besten verfügbaren Preisen";
+const pricingCards = [ 
+    { guests: 2, price: "36.000", delay: "100" }, 
+    { guests: 4, price: "48.000", delay: "200" }, 
+    { guests: 6, price: "55.000 - 68.000", delay: "300" } 
 ];
-
-const notes = [
-  { icon: "mdi:information", text: "Az árak nem tartalmazzák az üdülőhelyi adót!" },
-  { icon: "mdi:credit-card", text: "Széchenyi Pihenőkártyát elfogadunk." },
-  { icon: "mdi:cash", text: "Foglalás 30% foglaló befizetésével történik." }
-];
----
-
-<section class="hero">
-  <div class="hero-content">
-    <h1>{title}</h1>
-    {description && <p>{description}</p>}
-  </div>
-  <div class="hero-pattern"></div>
+const notes = [ 
+    { icon: "mdi:information", text: "Die Preise beinhalten keine Kurtaxe!" }, 
+    { icon: "mdi:credit-card", text: "Wir akzeptieren Széchenyi Erholungskarten." }, 
+    { icon: "mdi:cash", text: "Buchung erfolgt mit 30% Anzahlung." } 
+]; ---
+<section class="hero"> 
+    <div class="hero-content"> 
+        <h1>{title}</h1> 
+        {description && <p>{description}</p>} 
+    </div> 
+    <div class="hero-pattern"></div> 
 </section>
-
-<section class="pricing-section">
-  <div class="mobile-swipe-hint" id="swipeHint">
-    <Icon name="mdi:arrow-left" class="arrow-icon" />
-    <Icon name="mdi:hand-pointing-up" class="hand-icon" />
-    <Icon name="mdi:arrow-right" class="arrow-icon" />
-  </div>
-
-  <div class="pricing-grid">
-    {pricingCards.map(card => (
-      <div class="pricing-card" data-aos="fade-up" data-aos-delay={card.delay}>
-        <div class="card-header">
-          <h2 class="card-title">
-            <a href="products">
-              <Icon name="mdi:bed" class="bed-icon" />
-              {card.guests} vendég
-            </a>
-          </h2>
-          <Icon name="mdi:open-in-new" class="icon" />
-        </div>
-        
-        <div class="seasons">
-          <div class="season">
-            <div class="season-icon-wrapper">
-              <Icon name="mdi:weather-sunny" class="season-icon" />
-            </div>
-            <div class="season-content">
-              <h3>Előszezon</h3>
-              <p class="price">- 10 % kedvezmény</p>
-              <p class="date">május 1. - június 9.</p>
-            </div>
-          </div>
-          
-          <div class="season highlight">
-            <div class="season-icon-wrapper">
-              <Icon name="mdi:beach" class="season-icon" />
-            </div>
-            <div class="season-content">
-              <h3>Főszezon</h3>
-              <p class="price">{card.price},- Ft/éj</p>
-              <p class="date">június 10. - augusztus 25.</p>
-            </div>
-          </div>
-          
-          <div class="season">
-            <div class="season-icon-wrapper">
-              <Icon name="mdi:weather-sunset" class="season-icon" />
-            </div>
-            <div class="season-content">
-              <h3>Utószezon</h3>
-              <p class="price">- 10 % kedvezmény</p>
-              <p class="date">augusztus 26. - október 30.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-
-  <div class="notes">
-    {notes.map((note, index) => (
-      <div class="note-card" data-aos="fade-up" data-aos-delay={300 + index * 100}>
-        <div class="note-icon-wrapper">
-          <Icon name={note.icon} class="note-icon" />
-        </div>
-        <p>{note.text}</p>
-      </div>
-    ))}
-  </div>
+<section class="pricing-section"> 
+    <div class="mobile-swipe-hint" id="swipeHint"> 
+        <Icon name="mdi:arrow-left" class="arrow-icon" /> 
+        <Icon name="mdi:hand-pointing-up" class="hand-icon" /> 
+        <Icon name="mdi:arrow-right" class="arrow-icon" /> 
+    </div>
+    <div class="pricing-grid"> 
+        {pricingCards.map(card => ( 
+            <div class="pricing-card" data-aos="fade-up" data-aos-delay={card.delay}> 
+                <div class="card-header"> 
+                    <h2 class="card-title"> 
+                        <a href="products"> 
+                            <Icon name="mdi:bed" class="bed-icon" /> 
+                            {card.guests} Gäste 
+                        </a> 
+                    </h2> 
+                    <Icon name="mdi:open-in-new" class="icon" /> 
+                </div>
+                <div class="seasons"> 
+                    <div class="season"> 
+                        <div class="season-icon-wrapper"> 
+                            <Icon name="mdi:weather-sunny" class="season-icon" /> 
+                        </div> 
+                        <div class="season-content"> 
+                            <h3>Vorsaison</h3> 
+                            <p class="price">- 10 % Rabatt</p> 
+                            <p class="date">1. Mai - 9. Juni</p> 
+                        </div> 
+                    </div>
+                    <div class="season highlight"> 
+                        <div class="season-icon-wrapper"> 
+                            <Icon name="mdi:beach" class="season-icon" /> 
+                        </div> 
+                        <div class="season-content"> 
+                            <h3>Hauptsaison</h3> 
+                            <p class="price">{card.price},- Ft/Nacht</p> 
+                            <p class="date">10. Juni - 25. August</p> 
+                        </div> 
+                    </div>
+                    <div class="season"> 
+                        <div class="season-icon-wrapper"> 
+                            <Icon name="mdi:weather-sunset" class="season-icon" /> 
+                        </div> 
+                        <div class="season-content"> 
+                            <h3>Nachsaison</h3> 
+                            <p class="price">- 10 % Rabatt</p> 
+                            <p class="date">26. August - 30. Oktober</p> 
+                        </div> 
+                    </div> 
+                </div> 
+            </div> 
+        ))} 
+    </div>
+    <div class="notes"> 
+        {notes.map((note, index) => ( 
+            <div class="note-card" data-aos="fade-up" data-aos-delay={300 + index * 100}> 
+                <div class="note-icon-wrapper"> 
+                    <Icon name={note.icon} class="note-icon" /> 
+                </div> 
+                <p>{note.text}</p> 
+            </div> 
+        ))} 
+    </div> 
 </section>
 
 <script>

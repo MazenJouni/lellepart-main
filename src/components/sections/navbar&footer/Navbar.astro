@@ -1,15 +1,16 @@
 ---
 //Import relevant dependencies
 import NavLink from "@components/ui/links/NavLink.astro";
-import enStrings from "@utils/navigation.ts";
-import frStrings from "@utils/fr/navigation.ts";
+import huStrings from "@utils/navigation.ts";
+import enStrings from "@/utils/en/navigation";
+import deStrings from "@/utils/de/navigation";
 import LanguagePicker from "@components/ui/LanguagePicker.astro";
 import { Image } from "astro:assets";
 import Logo from "public/Lellepart_Apartmanház-removebg-preview.png";
 
 // Select the correct translation based on the page's lang prop:
-const strings = Astro.currentLocale === "fr" ? frStrings : enStrings;
-const homeUrl = Astro.currentLocale === "fr" ? "/fr" : "/";
+const strings = Astro.currentLocale === "en" ? enStrings : Astro.currentLocale === "de" ? deStrings : huStrings;
+const homeUrl = Astro.currentLocale === "en" ? "/en" : Astro.currentLocale === "de" ? "/de" : "/";
 ---
 
 <!-- Main header component -->

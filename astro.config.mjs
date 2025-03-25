@@ -14,12 +14,12 @@ export default defineConfig({
 
   sitemap({
     i18n: {
-      defaultLocale: "en",
+      defaultLocale: "hu",
       // All urls that don't contain `fr` after `https://screwfast.uk/` will be treated as default locale, i.e. `en`
       locales: {
+        hu: "hu",
         en: "en",
         // The `defaultLocale` value must present in `locales` keys
-        fr: "fr",
         de: "de"
       }
     }
@@ -35,16 +35,16 @@ export default defineConfig({
     // If both an Astro and Starlight i18n configurations are provided, an error is thrown.
     locales: {
       root: {
-        label: "English",
-        lang: "en"
+        label: "Magyar",
+        lang: "hu"
       },
       de: {
         label: "Deutsch",
         lang: "de"
       },
-      es: {
-        label: "Español",
-        lang: "es"
+      en: {
+        label: "English",
+        lang: "en"
       },
       fa: {
         label: "Persian",

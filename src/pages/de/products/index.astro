@@ -19,11 +19,11 @@ const product: CollectionEntry<"products">[] = (
 );
 
 // Define variables for page content
-const title: string = "Apartmanjaink";
+const title: string = "Unsere Apartments";
 const subTitle: string =
-  "Fedezze fel apartmanházunk különböző apartmanlehetőségeit, és találja meg az Önnek legmegfelelőbb szállást!";
+  "Entdecken Sie die verschiedenen Apartment-Optionen in unserem Apartmenthaus und finden Sie die Unterkunft, die am besten zu Ihnen passt!";
 
-const pageTitle: string = `Products | ${SITE.title}`;
+const pageTitle: string = `Produkte | ${SITE.title}`;
 ---
 
 <MainLayout
@@ -33,16 +33,15 @@ const pageTitle: string = `Products | ${SITE.title}`;
     "@type": "WebPage",
     "@id": "https://lellepart.hu/products",
     url: "https://lellepart.hu/products",
-    name: "Apartmenház | lellepart",
+    name: "Apartmenthaus | lellepart",
     description:
-      "Lellepart Apartmanházunkban minden kényelmet kielégítő körülmények között tudják eltölteni nyaralásukat. Saját, homokos, tengerparthoz hasonlító strandunk kisgyerekes családoknak is eszményi hely.",
+      "Im Lellepart Apartmenthaus können Sie Ihren Urlaub unter vollkommen zufriedenstellenden Bedingungen verbringen. Unser privater, sandiger Strand, der einem Meeresstrand ähnelt, ist ein idealer Ort selbst für Familien mit kleinen Kindern.",
     isPartOf: {
       "@type": "WebSite",
       url: "https://lellepart.hu",
       name: "Lellepart",
       description: "Lellepart Apartmanház.",
     },
-    inLanguage: "en-US",
   }}
 >
   <section class="hero">
@@ -69,12 +68,12 @@ const pageTitle: string = `Products | ${SITE.title}`;
   </section>  */}
 
   <FeaturesStatsAlt
-    title="Miért válassza a Lellepart Apartmanházat?"
-    subTitle="Akár romantikus kiruccanást, akár családi pihenést tervez, apartmanjaink kényelmet és lenyűgöző kilátást nyújtanak."
+    title="Warum Lellepart Apartmenthaus wählen?"
+    subTitle="Ob Sie einen romantischen Ausflug oder einen Familienurlaub planen, unsere Apartments bieten Komfort und atemberaubende Ausblicke."
     benefits={[
-      "Modern és kényelmes apartmanok a nyugodt pihenéshez.",
-      "Kiváló elhelyezkedés gyönyörű kilátással a Balatonra.",
-      "Privát strandhasználat az exkluzív élmény érdekében.",
+      "Moderne und komfortable Apartments für eine ruhige Auszeit.",
+      "Hervorragende Lage mit schönem Blick auf den Plattensee.",
+      "Privater Strandbereich für ein exklusives Erlebnis.",
     ]}
   
   />
@@ -104,7 +103,6 @@ const pageTitle: string = `Products | ${SITE.title}`;
     position: absolute;
     inset: 0;
     background: theme('backgroundImage.shimmer-gradient');
-    animation: shimmer 5s infinite linear;
   }
 
   .hero-content {
@@ -148,10 +146,6 @@ const pageTitle: string = `Products | ${SITE.title}`;
     100% { transform: translate(-20px, -20px); }
   }
 
-  @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
 
   @keyframes fadeSlideUp {
     from {

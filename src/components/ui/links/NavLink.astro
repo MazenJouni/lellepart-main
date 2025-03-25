@@ -11,9 +11,7 @@ interface Props {
 // Get the current path from Astro.url
 const currentPath = Astro.url.pathname;
 // Check if this link is active by comparing with current path
-const isActive = 
-  currentPath === url || 
-  (url !== '/' && currentPath.startsWith(url));
+const isActive = currentPath === url;
 ---
 
 <!--

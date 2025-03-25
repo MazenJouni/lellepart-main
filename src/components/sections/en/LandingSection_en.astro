@@ -4,54 +4,54 @@ import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import MainBuilding from "src/assets/images/main_hd.png";
 
-const title: string = "Szolgáltatásaink";
-const subtitle: string = "Szeretettel várjuk, kedves vendégeinket a <strong><em>Lellepart Apartmanház</em></strong> hivatalos oldalán!";
+const title: string = "Our Services";
+const subtitle: string = "We warmly welcome our dear guests to the official website of <strong><em>Lellepart Apartment House</em></strong>!";
 const description: string =
-  "Apartmanházunkban minden kényelmet kielégítő körülmények között tudják eltölteni nyaralásukat. Saját, homokos, tengerparthoz hasonlító strandunk tökéletes kikapcsolódást nyújt.";
+  "In our apartment house, you can spend your vacation in comfortable surroundings that meet all your needs. Our own sandy beach, similar to a seaside shore, provides perfect relaxation.";
 
 const services = [
   {
     icon: "mdi:map-marker",
-    title: "Elhelyezkedés",
-    description: "Szállodánk Balatonlelle központjában, közvetlenül a vízparton található. Élvezze a páratlan panorámát és a Balaton közelségét."
+    title: "Location",
+    description: "Our hotel is located in the center of Balatonlelle, directly on the waterfront. Enjoy the unique panorama and proximity to Lake Balaton."
   },
   {
     icon: "mdi:bus",
-    title: "Közlekedés",
-    description: "A vasútállomás és az autóbusz-állomás néhány perc sétára található szálláshelyünktől."
+    title: "Transportation",
+    description: "The train station and bus station are just a few minutes' walk from our accommodation."
   },
   {
     icon: "mdi:store",
-    title: "Környék",
-    description: "A környéken minden szolgáltatás elérhető: éttermek, üzletek, gyógyszertár, posta, orvosi rendelő és rendőrség."
+    title: "Neighborhood",
+    description: "All services are available in the area: restaurants, shops, pharmacy, post office, medical clinic, and police station."
   },
   {
     icon: "mdi:beach",
-    title: "Strand",
-    description: "Saját, homokos, tengerparthoz hasonlító strandunk tökéletes helyszín a pihenéshez és kikapcsolódáshoz."
+    title: "Beach",
+    description: "Our own sandy beach, similar to a seaside shore, is the perfect place for relaxation and recreation."
   },
   {
     icon: "mdi:home",
-    title: "Szállás",
-    description: "Modern, teljesen felszerelt apartmanjaink maximális kényelmet biztosítanak vendégeink számára."
+    title: "Accommodation",
+    description: "Our modern, fully equipped apartments provide maximum comfort for our guests."
   },
   {
     icon: "mdi:parking",
-    title: "Parkolás",
-    description: "Biztonságos, zárt parkolási lehetőség az apartmanház saját területén."
+    title: "Parking",
+    description: "Secure, enclosed parking available on the apartment house's own property."
   }
 ];
 
 const amenities = [
   {
     icon: "mdi:home",
-    title: "Szállás",
-    description: "Apartmanházunkban minden kényelmet kielégítő körülmények között tudják eltölteni nyaralásukat."
+    title: "Accommodation",
+    description: "In our apartment house, you can spend your vacation in comfortable surroundings that meet all your needs."
   },
   {
     icon: "mdi:parking",
-    title: "Parkolás",
-    description: "Zárt parkolási lehetőség az apartmanház területén belül."
+    title: "Parking",
+    description: "Enclosed parking within the apartment house area."
   }
 ];
 
@@ -65,7 +65,7 @@ const email = "lellepart1@gmail.com";
     <h1 set:html={subtitle} />
     <p>{description}</p>
     <div class="cta-container">
-      <a href="/contact" class="cta-button">Foglalás</a>
+      <a href="/contact" class="cta-button">Book Now</a>
       <div class="quick-contacts">
         <a href={`tel:${phone}`} class="contact-link">
           <Icon name="mdi:phone" class="contact-icon" />
@@ -81,7 +81,7 @@ const email = "lellepart1@gmail.com";
   <div class="hero-image">
     <Image 
       src={MainBuilding} 
-      alt="Lellepart Apartmanház" 
+      alt="Lellepart Apartment House" 
       width={800} 
       height={600}
     />

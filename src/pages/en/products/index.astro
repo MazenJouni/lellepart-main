@@ -19,9 +19,9 @@ const product: CollectionEntry<"products">[] = (
 );
 
 // Define variables for page content
-const title: string = "Apartmanjaink";
+const title: string = "Our Apartments";
 const subTitle: string =
-  "Fedezze fel apartmanházunk különböző apartmanlehetőségeit, és találja meg az Önnek legmegfelelőbb szállást!";
+  "Explore the various apartment options at our apartment house and find the accommodation that suits you best!";
 
 const pageTitle: string = `Products | ${SITE.title}`;
 ---
@@ -33,9 +33,9 @@ const pageTitle: string = `Products | ${SITE.title}`;
     "@type": "WebPage",
     "@id": "https://lellepart.hu/products",
     url: "https://lellepart.hu/products",
-    name: "Apartmenház | lellepart",
+    name: "Apartment House | lellepart",
     description:
-      "Lellepart Apartmanházunkban minden kényelmet kielégítő körülmények között tudják eltölteni nyaralásukat. Saját, homokos, tengerparthoz hasonlító strandunk kisgyerekes családoknak is eszményi hely.",
+      "At Lellepart Apartment House, you can spend your vacation in fully satisfying comfort. Our private, sandy beach, reminiscent of seaside shores, is an ideal place even for families with small children.",
     isPartOf: {
       "@type": "WebSite",
       url: "https://lellepart.hu",
@@ -69,12 +69,12 @@ const pageTitle: string = `Products | ${SITE.title}`;
   </section>  */}
 
   <FeaturesStatsAlt
-    title="Miért válassza a Lellepart Apartmanházat?"
-    subTitle="Akár romantikus kiruccanást, akár családi pihenést tervez, apartmanjaink kényelmet és lenyűgöző kilátást nyújtanak."
+    title="Why Choose Lellepart Apartment House?"
+    subTitle="Whether you're planning a romantic getaway or a family vacation, our apartments offer comfort and stunning views."
     benefits={[
-      "Modern és kényelmes apartmanok a nyugodt pihenéshez.",
-      "Kiváló elhelyezkedés gyönyörű kilátással a Balatonra.",
-      "Privát strandhasználat az exkluzív élmény érdekében.",
+      "Modern and comfortable apartments for a peaceful retreat.",
+      "Excellent location with beautiful views of Lake Balaton.",
+      "Private beach access for an exclusive experience.",
     ]}
   
   />
@@ -104,7 +104,6 @@ const pageTitle: string = `Products | ${SITE.title}`;
     position: absolute;
     inset: 0;
     background: theme('backgroundImage.shimmer-gradient');
-    animation: shimmer 5s infinite linear;
   }
 
   .hero-content {
@@ -148,10 +147,6 @@ const pageTitle: string = `Products | ${SITE.title}`;
     100% { transform: translate(-20px, -20px); }
   }
 
-  @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
-  }
 
   @keyframes fadeSlideUp {
     from {

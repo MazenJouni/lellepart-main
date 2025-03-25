@@ -1,4 +1,7 @@
+export const showDefaultLang = false;
+
 export const languages = {
+    hu: "Magyar",
     en: "English",
-    fr: "Français",
+    de: "Deutsch"
 };
