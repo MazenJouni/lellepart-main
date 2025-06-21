@@ -1,0 +1,675 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { Image } from "astro:assets";
+import { SITE } from "@data/constants";
+
+// Import gallery images - you'll need to add your images to src/assets/images/gallery/
+// For now, I'll use placeholder imports that you can replace with actual images
+import gallery1 from "src/assets/images/balaton.jpg";
+import gallery2 from "src/assets/images/balaton_eye.jpg";
+import gallery3 from "src/assets/images/strand.png";
+import gallery4 from "src/assets/images/strand1.png";
+import gallery5 from "src/assets/images/main_hd.png";
+
+const galleryImages = [
+  {
+    src: gallery1,
+    alt: "Lake Balaton View",
+    title: "Beautiful Lake Balaton",
+    category: "nature"
+  },
+  {
+    src: gallery2,
+    alt: "Balaton Eye View",
+    title: "Balaton Eye",
+    category: "nature"
+  },
+  {
+    src: gallery3,
+    alt: "Strand View",
+    title: "Strand",
+    category: "facility"
+  },
+  {
+    src: gallery4,
+    alt: "Strand 1",
+    title: "Strand 1",
+    category: "facility"
+  },
+  {
+    src: gallery5,
+    alt: "Main Building",
+    title: "Main Building",
+    category: "building"
+  }
+];
+
+// Define variables for page content
+const title: string = "Galéria";
+const subTitle: string = "Fedezze fel a Lellepart Apartmanház és a Balaton szépségét képeinken keresztül!";
+
+const pageTitle: string = `Gallery | ${SITE.title}`;
+---
+
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://lellepart.hu/gallery",
+    url: "https://lellepart.hu/gallery",
+    name: "Galéria | lellepart",
+    description: "Lellepart Apartmanház galériája - fedezze fel a szállásunkat és a Balaton környékét képeinken keresztül.",
+    isPartOf: {
+      "@type": "WebSite",
+      url: "https://lellepart.hu",
+      name: "Lellepart",
+      description: "Lellepart Apartmanház.",
+    },
+    inLanguage: "en-US",
+  }}
+>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>{title}</h1>
+      {subTitle && <p>{subTitle}</p>}
+    </div>
+    <div class="hero-pattern"></div>
+  </section>
+
+  <section class="gallery">
+    <div class="gallery-grid">
+      {galleryImages.map((image: any, index: number) => (
+        <div class="gallery-item" data-index={index}>
+          <div class="image-container">
+            <Image
+              src={image.src}
+              alt={image.alt}
+              class="gallery-image"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="image-overlay">
+              <h3 class="image-title">{image.title}</h3>
+              <button class="view-btn" data-index={index}>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+</MainLayout>
+
+<!-- Lightbox Modal -->
+<div class="lightbox-modal" id="lightbox-modal">
+  <div class="lightbox-content">
+    <button class="close-btn" id="close-lightbox">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    <button class="nav-btn prev-btn" id="prev-btn">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+      </svg>
+    </button>
+    <button class="nav-btn next-btn" id="next-btn">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+    <div class="lightbox-image-container">
+      <img id="lightbox-image" src="" alt="" class="lightbox-image">
+      <div class="lightbox-info">
+        <h3 id="lightbox-title" class="lightbox-title"></h3>
+        <p id="lightbox-category" class="lightbox-category"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero {
+    display: flex;
+    align-items: center;
+    min-height: 40vh;
+    padding: 7rem 2rem 2rem;
+    background: theme('backgroundImage.primary-gradient');
+    position: relative;
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
+    background-size: 40px 40px;
+    animation: patternMove 20s linear infinite;
+    pointer-events: none;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: theme('backgroundImage.shimmer-gradient');
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeSlideUp 1s ease-out forwards;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: white;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+
+  .hero p {
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+  }
+
+  .gallery {
+    padding: 4rem 2rem;
+    background: theme('colors.background.light');
+  }
+
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .gallery-item {
+    opacity: 1;
+    transform: scale(1);
+    transition: all 0.3s ease;
+  }
+
+  .image-container {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background: white;
+    cursor: pointer;
+  }
+
+  .image-container:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .gallery-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .image-container:hover .gallery-image {
+    transform: scale(1.05);
+  }
+
+  .image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(33, 147, 176, 0.9) 0%, rgba(109, 213, 237, 0.7) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .image-container:hover .image-overlay {
+    opacity: 1;
+  }
+
+  .image-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin: 0;
+  }
+
+  .view-btn {
+    background: white;
+    color: #2193b0;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .view-btn:hover {
+    background: #2193b0;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Lightbox Styles */
+  .lightbox-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 3000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+  }
+
+  .lightbox-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .lightbox-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .close-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+  }
+
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .prev-btn {
+    left: 2rem;
+  }
+
+  .next-btn {
+    right: 2rem;
+  }
+
+  .lightbox-image-container {
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+  }
+
+  .lightbox-image {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .lightbox-info {
+    margin-top: 1.5rem;
+    color: white;
+  }
+
+  .lightbox-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .lightbox-category {
+    font-size: 1rem;
+    opacity: 0.8;
+    text-transform: capitalize;
+    color: #94a3b8;
+  }
+
+  @keyframes patternMove {
+    0% { transform: translate(0); }
+    100% { transform: translate(-20px, -20px); }
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      min-height: auto;
+      padding: 6rem 1rem 2rem;
+    }
+
+    .hero-content {
+      padding: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .gallery {
+      padding: 2rem 0.5rem;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 0;
+    }
+
+    .gallery-image {
+      height: 180px;
+    }
+
+    .nav-btn {
+      display: none;
+    }
+
+    .close-btn {
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero {
+      padding: 6rem 1rem 2rem;
+    }
+
+    .hero-content {
+      padding: 1rem;
+    }
+
+    .hero h1 {
+      font-size: 1.75rem;
+    }
+
+    .hero p {
+      font-size: 0.9rem;
+    }
+
+    .gallery {
+      padding: 1.5rem 0.25rem;
+    }
+
+    .gallery-grid {
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      padding: 0;
+    }
+
+    .gallery-image {
+      height: 120px;
+    }
+
+    .image-title {
+      font-size: 0.875rem;
+    }
+
+    .view-btn {
+      width: 36px;
+      height: 36px;
+    }
+
+    .image-overlay {
+      gap: 0.5rem;
+    }
+
+    .nav-btn {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  // Gallery functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const lightboxCategory = document.getElementById('lightbox-category');
+    const closeBtn = document.getElementById('close-lightbox');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const viewBtns = document.querySelectorAll('.view-btn');
+
+    let currentImageIndex = 0;
+    const images = Array.from(galleryItems);
+
+    // Touch/swipe variables
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    // Lightbox functionality
+    function openLightbox(index: number) {
+      const item = images[index];
+      const img = item.querySelector('.gallery-image') as HTMLImageElement;
+      const title = item.querySelector('.image-title')?.textContent || '';
+      const category = (item as HTMLElement).dataset.category || 'gallery';
+
+      if (lightboxImage && img) {
+        lightboxImage.src = img.src;
+        lightboxImage.alt = img.alt;
+      }
+      
+      if (lightboxTitle) {
+        lightboxTitle.textContent = title;
+      }
+      
+      if (lightboxCategory) {
+        lightboxCategory.textContent = category;
+      }
+      
+      currentImageIndex = index;
+
+      if (lightboxModal) {
+        lightboxModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeLightbox() {
+      if (lightboxModal) {
+        lightboxModal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    function showNext() {
+      currentImageIndex = (currentImageIndex + 1) % images.length;
+      openLightbox(currentImageIndex);
+    }
+
+    function showPrev() {
+      currentImageIndex = currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
+      openLightbox(currentImageIndex);
+    }
+
+    // Touch event handlers
+    function handleTouchStart(e: TouchEvent) {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }
+
+    function handleTouchEnd(e: TouchEvent) {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      handleSwipe();
+    }
+
+    function handleSwipe() {
+      const diffX = touchStartX - touchEndX;
+      const diffY = touchStartY - touchEndY;
+      
+      // Check if it's a horizontal swipe (not vertical)
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 50) {
+        if (diffX > 0) {
+          // Swipe left - next image
+          showNext();
+        } else {
+          // Swipe right - previous image
+          showPrev();
+        }
+      }
+    }
+
+    // Event listeners for view buttons
+    viewBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const index = parseInt((btn as HTMLElement).dataset.index || '0');
+        if (!isNaN(index)) {
+          openLightbox(index);
+        }
+      });
+    });
+
+    // Event listeners for image containers (click anywhere on image)
+    galleryItems.forEach((item, index) => {
+      item.addEventListener('click', () => {
+        openLightbox(index);
+      });
+    });
+
+    // Lightbox controls
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeLightbox);
+    }
+    
+    if (prevBtn) {
+      prevBtn.addEventListener('click', showPrev);
+    }
+    
+    if (nextBtn) {
+      nextBtn.addEventListener('click', showNext);
+    }
+
+    // Touch events for mobile navigation
+    if (lightboxModal) {
+      lightboxModal.addEventListener('touchstart', handleTouchStart, { passive: true });
+      lightboxModal.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
+
+    // Close lightbox on background click
+    if (lightboxModal) {
+      lightboxModal.addEventListener('click', (e) => {
+        if (e.target === lightboxModal) {
+          closeLightbox();
+        }
+      });
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!lightboxModal || !lightboxModal.classList.contains('active')) return;
+
+      switch(e.key) {
+        case 'Escape':
+          closeLightbox();
+          break;
+        case 'ArrowLeft':
+          showPrev();
+          break;
+        case 'ArrowRight':
+          showNext();
+          break;
+      }
+    });
+  });
+</script>
