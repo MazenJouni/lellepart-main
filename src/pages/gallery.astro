@@ -418,6 +418,18 @@ const pageTitle: string = `Gallery | ${SITE.title}`;
     }
   }
 
+  @media (max-width: 924px) {
+    .gallery-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      padding: 0 1rem;
+    }
+
+    .gallery-image {
+      height: 250px;
+    }
+  }
+
   @media (max-width: 768px) {
     .hero {
       min-height: auto;
@@ -443,7 +455,7 @@ const pageTitle: string = `Gallery | ${SITE.title}`;
     }
 
     .gallery-grid {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: 1fr;
       gap: 1rem;
       padding: 0;
     }
@@ -539,9 +551,14 @@ const pageTitle: string = `Gallery | ${SITE.title}`;
     // Lightbox functionality
     function openLightbox(index: number) {
       const item = images[index];
-      const img = item.querySelector('.gallery-image') as HTMLImageElement;
+      const imgElement = item.querySelector('.gallery-image');
       const title = item.querySelector('.image-title')?.textContent || '';
       const category = (item as HTMLElement).dataset.category || 'gallery';
+
+      if (lightboxImage instanceof HTMLImageElement && imgElement && imgElement instanceof HTMLImageElement) {
+        lightboxImage.src = imgElement.src;
+        lightboxImage.alt = imgElement.alt;
+      }
       
       if (lightboxTitle) {
         lightboxTitle.textContent = title;
