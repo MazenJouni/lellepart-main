@@ -542,11 +542,6 @@ const pageTitle: string = `Gallery | ${SITE.title}`;
       const img = item.querySelector('.gallery-image') as HTMLImageElement;
       const title = item.querySelector('.image-title')?.textContent || '';
       const category = (item as HTMLElement).dataset.category || 'gallery';
-
-      if (lightboxImage && img) {
-        lightboxImage.src = img.src;
-        lightboxImage.alt = img.alt;
-      }
       
       if (lightboxTitle) {
         lightboxTitle.textContent = title;
