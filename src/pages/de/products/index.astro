@@ -15,7 +15,7 @@ const product: CollectionEntry<"products">[] = (
   await getCollection("products")
 ).sort(
   (a: CollectionEntry<"products">, b: CollectionEntry<"products">) =>
-    a.data.main.id - b.data.main.id,
+    (a.data.main?.id || 0) - (b.data.main?.id || 0),
 );
 
 // Define variables for page content
@@ -52,20 +52,22 @@ const pageTitle: string = `Produkte | ${SITE.title}`;
     <div class="hero-pattern"></div>
   </section>
 
-  {/* <section class="products">
+  {<section class="products">
     <div class="products-grid">
       {
         product.map((product, index) => {
           const position = index % 4;
+          const productData = product.data as any;
+          const germanTitle = productData.title_de || product.data.title;
           if (position === 0 || position === 3) {
-            return <CardSmall product={product} />;
+            return <CardSmall product={{...product, data: {...product.data, title: germanTitle}}} />;
           } else {
-            return <CardWide product={product} />;
+            return <CardWide product={{...product, data: {...product.data, title: germanTitle}}} />;
           }
         })
       }
     </div>
-  </section>  */}
+  </section>}
 
   <FeaturesStatsAlt
     title="Warum Lellepart Apartmenthaus wählen?"

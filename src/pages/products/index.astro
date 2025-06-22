@@ -15,7 +15,7 @@ const product: CollectionEntry<"products">[] = (
   await getCollection("products")
 ).sort(
   (a: CollectionEntry<"products">, b: CollectionEntry<"products">) =>
-    a.data.main.id - b.data.main.id,
+    (a.data.main?.id || 0) - (b.data.main?.id || 0),
 );
 
 // Define variables for page content
