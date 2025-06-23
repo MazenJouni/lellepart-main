@@ -6,9 +6,9 @@ import MainBuilding from "src/assets/images/main_hd.png";
 import ReviewComponent from "@components/ui/blocks/ReviewComponent.astro";
 
 const title: string = "Our Services";
-const subtitle: string = "We warmly welcome our dear guests to the official website of <strong><em>Lellepart Apartment House</em></strong>!";
+const subtitle: string = "We warmly welcome our dear guests to the official website of <br><strong><em>Lellepart ApartmanHouse</em></strong>!";
 const description: string =
-  "In our apartment house, you can spend your vacation in comfortable surroundings that meet all your needs. Our own sandy beach, similar to a seaside shore, provides perfect relaxation.";
+  "In our apartmanhouse, you can spend your vacation in comfortable surroundings that meet all your needs. Our own sandy beach, similar to a seaside shore, provides perfect relaxation.";
 
 const services = [
   {
@@ -66,7 +66,7 @@ const email = "lellepart1@gmail.com";
     <h1 set:html={subtitle} />
     <p>{description}</p>
     <div class="cta-container">
-      <a href="/contact" class="cta-button">Book Now</a>
+      <a href="/en/contact" class="cta-button">Book Now</a>
       <div class="quick-contacts">
         <a href={`tel:${phone}`} class="contact-link">
           <Icon name="mdi:phone" class="contact-icon" />

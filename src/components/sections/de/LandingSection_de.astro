@@ -6,7 +6,7 @@ import MainBuilding from "src/assets/images/main_hd.png";
 import ReviewComponent from "@components/ui/blocks/ReviewComponent.astro";
 
 const title: string = "Unsere Dienstleistungen";
-const subtitle: string = "Wir heißen unsere lieben Gäste herzlich willkommen auf der offiziellen Website des <strong><em>Lellepart Apartment-Hauses</em></strong>!";
+const subtitle: string = "Wir heißen unsere lieben Gäste herzlich willkommen auf der offiziellen Website des <br><strong><em>Lellepart Apartment-Hauses</em></strong>!";
 const description: string =
   "In unserem Apartment-Haus können Sie Ihren Urlaub in komfortablen Räumlichkeiten verbringen, die alle Ihre Bedürfnisse erfüllen. Unser eigener sandiger Strand, ähnlich einem Meeresstrand, bietet perfekte Erholung.";
 
@@ -67,7 +67,7 @@ const email = "lellepart1@gmail.com";
     <h1 set:html={subtitle} />
     <p>{description}</p>
     <div class="cta-container">
-      <a href="/contact" class="cta-button">Jetzt buchen</a>
+      <a href="/de/contact" class="cta-button">Jetzt buchen</a>
       <div class="quick-contacts">
         <a href={`tel:${phone}`} class="contact-link">
           <Icon name="mdi:phone" class="contact-icon" />
