@@ -20,16 +20,20 @@ const socialMediaText: string =
 <footer class="footer">
   <!-- Social Brands -->
   <div class="social-container">
-    <p class="text">{socialMediaText}:</p>
-    <FooterSocialLink url={strings.socialLinks.facebook}
-      ><Icon name="facebookFooter" />
-    </FooterSocialLink>
-    <FooterSocialLink url={strings.socialLinks.instagram}
-      ><Icon name="instagramFooter" />
-    </FooterSocialLink>
-    <FooterSocialLink url={strings.socialLinks.tiktok}
-      ><Icon name="tiktokFooter" />
-    </FooterSocialLink>
+    <div class="social-text-row">
+      <p class="text">{socialMediaText}:</p>
+    </div>
+    <div class="social-logos-col">
+      <FooterSocialLink url={strings.socialLinks.facebook}>
+        <Icon name="facebookFooter" />
+      </FooterSocialLink>
+      <FooterSocialLink url={strings.socialLinks.instagram}>
+        <Icon name="instagramFooter" />
+      </FooterSocialLink>
+      <FooterSocialLink url={strings.socialLinks.tiktok}>
+        <Icon name="tiktokFooter" />
+      </FooterSocialLink>
+    </div>
   </div>
 </footer>
 
@@ -42,13 +46,27 @@ const socialMediaText: string =
     overflow: hidden;
   }
 
-  .social-container{
-    justify-content: center;
+  .social-container {
+    display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    text-align: center;
+  }
 
-    .text {
-      font-size: large;
-    }
+  .social-text-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .social-logos-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
   }
 
   /* Add shimmer effect like in hero */
@@ -67,12 +85,19 @@ const socialMediaText: string =
     100% { transform: translateX(100%); }
   }
 
-  .social-container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    gap: 1rem;
-    position: relative; /* Add this to place above shimmer */
-    z-index: 1; /* Add this to place above shimmer */
+  @media (max-width: 640px) {
+    .social-container {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0;
+    }
+    .social-text-row {
+      flex-direction: row;
+      margin: 0;
+    }
+    .social-logos-col {
+      flex-direction: row;
+    }
   }
 </style>
