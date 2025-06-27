@@ -7,7 +7,7 @@ const description: string = "Discover our seasonal pricing options and enjoy you
 const pricingCards = [
   { guests: 2, price: "36.000", delay: "100" },
   { guests: 4, price: "48.000", delay: "200" },
-  { guests: 6, price: "55.000 - 68.000", delay: "300" }
+  { guests: 6, price: "55-68.000", delay: "300" }
 ];
 
 const notes = [
@@ -37,9 +37,9 @@ const notes = [
       <div class="pricing-card" data-aos="fade-up" data-aos-delay={card.delay}>
         <div class="card-header">
           <h2 class="card-title">
-            <a href="products">
+            <a href="/en/products">
               <Icon name="mdi:bed" class="bed-icon" />
-              {card.guests} guests
+              {card.guests} guests apartment
             </a>
           </h2>
           <Icon name="mdi:open-in-new" class="icon" />
@@ -63,7 +63,7 @@ const notes = [
             </div>
             <div class="season-content">
               <h3>Peak Season</h3>
-              <p class="price">{card.price},- HUF/night</p>
+              <p class="price">{card.price},- HUF/night/apartment</p>
               <p class="date">June 10 - August 25</p>
             </div>
           </div>
@@ -195,7 +195,6 @@ const notes = [
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
-    max-width: 1200px;
     margin: 0 auto;
   }
 

@@ -9,19 +9,18 @@ import Icon from "@components/ui/icons/Icon.astro";
 const strings = Astro.currentLocale === "fr" ? frStrings : enStrings;
 
 // Define the variables that will be used in this component
-const sectionThreeTitle: string =
-  Astro.currentLocale === "fr" ? "Rester à jour" : "Stay up to date";
-const sectionThreeContent: string =
-  Astro.currentLocale === "fr"
-    ? "Restez informé des derniers outils et des offres exclusives."
-    : "Stay updated with the latest tools and exclusive deals.";
-const crafted: string =
-  Astro.currentLocale === "fr" ? "Fabriqué par" : "Crafted by";
+const socialMediaText: string =
+  Astro.currentLocale === "hu"
+    ? "Látogasson el közösségi média felületeinkre"
+    : Astro.currentLocale === "de"
+    ? "Folge uns in den sozialen Medien"
+    : "Check us out on social media";
 ---
 
 <footer class="footer">
   <!-- Social Brands -->
   <div class="social-container">
+    <p class="text">{socialMediaText}:</p>
     <FooterSocialLink url={strings.socialLinks.facebook}
       ><Icon name="facebookFooter" />
     </FooterSocialLink>
@@ -41,6 +40,15 @@ const crafted: string =
     background: theme('backgroundImage.primary-gradient-alt');
     position: relative;
     overflow: hidden;
+  }
+
+  .social-container{
+    justify-content: center;
+    align-items: center;
+
+    .text {
+      font-size: large;
+    }
   }
 
   /* Add shimmer effect like in hero */
