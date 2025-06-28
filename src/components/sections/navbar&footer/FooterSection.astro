@@ -53,6 +53,8 @@ const socialMediaText: string =
     gap: 1rem;
     width: 100%;
     text-align: center;
+    position: relative;
+    z-index: 2;
   }
 
   .social-text-row {
@@ -60,6 +62,8 @@ const socialMediaText: string =
     align-items: center;
     justify-content: center;
     margin: 0;
+    position: relative;
+    z-index: 2;
   }
 
   .social-logos-col {
@@ -67,6 +71,8 @@ const socialMediaText: string =
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    position: relative;
+    z-index: 2;
   }
 
   /* Add shimmer effect like in hero */
@@ -78,6 +84,8 @@ const socialMediaText: string =
     right: 0;
     bottom: 0;
     background: theme('backgroundImage.shimmer-gradient');
+    pointer-events: none;
+    z-index: 1;
   }
 
   @keyframes shimmer {
